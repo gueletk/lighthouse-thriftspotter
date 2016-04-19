@@ -1,0 +1,73 @@
+@import url(https://fonts.googleapis.com/css?family=Bevan);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700);
+
+$mainColor:#0a2929;
+$blueColor:#33cccc;
+$mainFont:"Source Sans", sans-serif;
+$displayFont: 'Bevan', cursive;
+
+body {
+  font-family:$mainFont;
+  font-weight:300;
+  color:$mainColor;
+  font-size:16px;
+}
+
+h1 {
+  font-family: $displayFont;
+}
+
+.logo {
+  font-family: $displayFont;
+  color: $mainColor;
+  transition: color .3s;
+  font-size:60px;
+  cursor: pointer;
+  &:hover, 
+  &:focus {
+    color:$blueColor;
+    text-decoration: none; 
+  }
+}
+
+.navbar-default {
+    background-color: $blueColor;
+    border:0;
+    border-radius:0;
+    padding:10px 0px;
+    font-weight:700;
+    color:white;
+}
+
+
+.post-btn {
+  background-color:white;
+  color:$mainColor;
+  transition:opacity .3s;
+  &:hover {
+    background-color:white!important;
+    opacity:.6;
+  }
+}
+
+
+.navbar-default .navbar-nav>li>a {
+  color: $mainColor;
+  transition:opacity .3s;
+  &:hover {
+    opacity:.6;
+  }
+}
+
+.mock {
+  background-color: $blueColor;
+  min-height:300px;
+  margin-bottom:20px;
+  transition:opacity .3s;
+  padding:20px;
+}
+
+.btn {
+  font-weight:700;
+  border-radius: 0px;
+}
