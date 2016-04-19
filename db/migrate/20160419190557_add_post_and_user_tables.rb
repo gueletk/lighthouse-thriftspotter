@@ -4,6 +4,7 @@ class AddPostAndUserTables < ActiveRecord::Migration
       t.string :username
       t.string :name
       t.string :password_hash
+      t.string :session_token
 
       t.timestamps
     end
