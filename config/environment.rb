@@ -29,7 +29,3 @@ require APP_ROOT.join('config', 'database')
 
 # Load the routes / actions
 require APP_ROOT.join('app', 'actions')
-
-# Set up the default location for uploaded images
-Paperclip.options[:command_path] = "/home/ksenia/lighthouse/lighthouse-midterm/images/"
-"
