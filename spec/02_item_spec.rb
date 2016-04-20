@@ -20,7 +20,7 @@ describe Item do
     it "should not be more than 50 characters" do
       @item.title = Faker::Lorem.characters(51)
       expect(@item).to_not be_valid
-      expect(@item.errors[:titles]).to include 'is too long (maximum is 50 characters)'
+      expect(@item.errors[:title]).to include "50 characters is the maximum allowed"
     end
   end
 
@@ -34,7 +34,7 @@ describe Item do
     it "should not be more than 300 characters" do
       @item.description = Faker::Lorem.characters(301)
       expect(@item).to_not be_valid
-      expect(@item.errors[:description]).to include 'is too long (maximum is 300 characters)'
+      expect(@item.errors[:description]).to include '300 characters is the maximum allowed'
     end
   end
 
@@ -43,6 +43,11 @@ describe Item do
      @item.price = 'abc'
      expect(@item).to_not be_valid
      expect(@item.errors[:price]).to include 'is not a number'
+   end
+   it 'must be a greater than 0' do
+     @item.price = 0
+     expect(@item).to_not be_valid
+     expect(@item.errors[:price]).to include 'must be greater than 0'
    end
   end
 
@@ -56,7 +61,7 @@ describe Item do
     it "should not be more than 50 characters" do
       @item.location = Faker::Lorem.characters(51)
       expect(@item).to_not be_valid
-      expect(@item.errors[:location]).to include 'is too long (maximum is 50 characters)'      
+      expect(@item.errors[:location]).to include "50 characters is the maximum allowed"    
     end
   end
 
