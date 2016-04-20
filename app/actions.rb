@@ -1,5 +1,6 @@
 # Homepage (Root path)
 require 'securerandom'
+use Rack::MethodOverride
 
 def user_authenticate!
   redirect '/login' unless session.has_key?(:session_token)
@@ -8,15 +9,29 @@ def user_authenticate!
   end
 end
 
+def check_password(user, password)
+
+end
+
 get '/' do
   erb :index
 end
 
-post '/signup' do
+post '/users/signup' do
+  password_salt = BCrypt::Engine.generate_salt
+  password_hash = BCrypt::Engine.hash_secret(params[:password], password_salt)
   @user = User.new(
     username: params[:username],
-    name: params[:name]
+    name: params[:name],
+    email: params[:email],
+    password_salt: password_salt,
+    password_hash: password_hash
     )
+  if @user.save
+    redirect '/login'
+  else
+    redirect '/signup'
+  end
 end
 
 get '/' do
@@ -37,7 +52,7 @@ end
 
 post '/session' do
   user = User.find_by_email(params[:email].downcase)
-  if user && user.authenticate(params[:password])
+  if user && check_password(user, params[:password])
     session[:session_token] = SecureRandom.urlsafe_base64()
     user.update!(session_token: session[:session_token])
     redirect '/protected'
@@ -49,16 +64,5 @@ end
 get '/session/sign_out' do
   User.find_by_session_token(session[:session_token]).update!(session_token: nil)
   session.clear
-  redirect '/login'
-end
-#
-# password_digest, null: false
-# session_token
-
-get '/items/new' do
-  erb :'items/new'
-end
-
-get '/items/show' do
-  erb :'items/show'
+  redirect '/index'
 end

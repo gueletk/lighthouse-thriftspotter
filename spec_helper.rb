@@ -8,8 +8,8 @@ require 'active_record'
 require 'faker'
 require 'database_cleaner'
 
-require './models/item'
-require './models/user'
+require './app/models/item'
+require './app/models/user'
 
 # Connect to the DB
 ActiveRecord::Base.establish_connection(
