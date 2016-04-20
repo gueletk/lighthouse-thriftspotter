@@ -9,7 +9,7 @@ def get_file_name(title, image_name)
 end
 
 get '/' do
-  @items = Item.all
+  @items = Item.all.order(created_at: :desc)
   erb :index
 end
 #
