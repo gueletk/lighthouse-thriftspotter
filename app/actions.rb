@@ -23,13 +23,20 @@ post '/items/new' do
   @item = Item.new(
     title: params[:title],
     description: params[:description],
-    image_path: params[:image_path],
     price: params[:price],
+    image_path: params[:image][:filename],
     location: params[:location],
     user_id: params[:user_id]
   )
+
+  file = params[:image][:tempfile]
+
+  File.open("./public/images/#{@item.image_path}", 'wb') do |f|
+    f.write(file.read)
+  end
+
   if @item.save
-    redirect 'index'
+    redirect '/'
   else
     redirect 'items/new'
   end
