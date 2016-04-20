@@ -1,5 +1,6 @@
 # Homepage (Root path)
 require 'pry'
+require 'bcrypt'
 use Rack::MethodOverride
 
 def get_file_name(title, image_name)
@@ -57,6 +58,7 @@ get '/items/show' do
 end
 
 get '/users/signup' do
+  @user = User.new
   erb :'users/signup'
 end
 
@@ -71,9 +73,9 @@ post '/users/signup' do
     password_hash: password_hash
   )
   if @user.save
-    redirect '/login'
+    redirect '/users/login'
   else
-    redirect '/signup'
+    erb :'users/signup'
   end
 end
 
