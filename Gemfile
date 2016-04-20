@@ -13,7 +13,6 @@ gem 'tux'
 gem 'bcrypt'
 gem 'database_cleaner'
 
-
 group :development, :test do
   gem 'pry'
   gem 'shotgun'

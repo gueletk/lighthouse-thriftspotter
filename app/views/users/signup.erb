@@ -9,14 +9,21 @@
          <div class="form-group form-group-lg">
            <label class="col-sm-4 control-label">* Email</label>
            <div class="col-sm-6">
-             <input type="text" name="email" class="form-control">
+             <input type="text" name="email" class="form-control" value="<%= @user.email %>">
+           </div>
+         </div>
+
+         <div class="form-group form-group-lg">
+           <label class="col-sm-4 control-label">* Name</label>
+           <div class="col-sm-6">
+             <input type="text" name="name" class="form-control" value="<%= @user.name %>">
            </div>
          </div>
 
          <div class="form-group form-group-lg">
            <label class="col-sm-4 control-label">* Username</label>
            <div class="col-sm-6">
-             <input type="text" name="username" class="form-control">
+             <input type="text" name="username" class="form-control" value="<%= @user.username %>">
            </div>
          </div>
 

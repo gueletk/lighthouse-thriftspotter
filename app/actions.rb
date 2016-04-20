@@ -1,5 +1,10 @@
 # Homepage (Root path)
 require 'pry'
+<<<<<<< Updated upstream
+=======
+require 'bcrypt'
+use Rack::MethodOverride
+>>>>>>> Stashed changes
 
 def get_file_name(title, image_name)
   name = title.gsub(/\s+/,'_').downcase
@@ -56,7 +61,25 @@ get '/items/show' do
 end
 
 get '/users/signup' do
+  @user = User.new
   erb :'users/signup'
+end
+
+post '/users/signup' do
+  password_salt = BCrypt::Engine.generate_salt
+  password_hash = BCrypt::Engine.hash_secret(params[:password], password_salt)
+  @user = User.new(
+    username: params[:username],
+    name: params[:name],
+    email: params[:email],
+    password_salt: password_salt,
+    password_hash: password_hash
+  )
+  if @user.save
+    redirect '/users/login'
+  else
+    erb :'users/signup'
+  end
 end
 
 get '/users/login' do
