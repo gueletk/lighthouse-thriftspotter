@@ -1,41 +1,8 @@
 <div class="row">
+<% @items.each do |item| %>
+<% @item = item %>
   <div class="col-md-3">
-    <div class='mock'>&nbsp;</div>
+    <%= @item.image %>
   </div>
-  <div class="col-md-3">
-    <div class='mock'>&nbsp;</div>  
-  </div>
-  <div class="col-md-3">   
-    <div class='mock'>&nbsp;</div>
-  </div>
-  <div class="col-md-3">   
-    <div class='mock'>&nbsp;</div>
-  </div>
-
-  <div class="col-md-3">
-    <div class='mock'>&nbsp;</div>
-  </div>
-  <div class="col-md-3">
-    <div class='mock'>&nbsp;</div>  
-  </div>
-  <div class="col-md-3">   
-    <div class='mock'>&nbsp;</div>
-  </div>
-  <div class="col-md-3">   
-    <div class='mock'>&nbsp;</div>
-  </div>
-
-  <div class="col-md-3">
-    <div class='mock'>&nbsp;</div>
-  </div>
-  <div class="col-md-3">
-    <div class='mock'>&nbsp;</div>  
-  </div>
-  <div class="col-md-3">   
-    <div class='mock'>&nbsp;</div>
-  </div>
-  <div class="col-md-3">   
-    <div class='mock'>&nbsp;</div>
-  </div>
-
+  <% end %>
 </div>
