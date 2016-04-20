@@ -100,4 +100,37 @@ a {
     border-radius:0px;
   }
 }
-  
+
+.icon{
+  width: 32px;
+  height: 32px;
+  fill: #ccc;
+}
+
+
+
+.icon.is-outlined{
+  stroke:  #FE4365;
+  stroke-width: 2px;
+  fill: transparent;
+}
+
+
+.icon.is-hoverable:hover{
+  fill: #FE4365;
+  cursor: pointer;
+}
+
+.icon.is-activeable:active{
+  transform: scale(1.25);
+  cursor: pointer;
+}
+
+
+.icon.is-transit{
+   -webkit-transition: all .35s ease-out;
+  -moz-transition: all .35s ease-out;
+  -ms-transition: all .35s ease-out;
+  -o-transition: all .35s ease-out;
+  transition: all .35s ease-out;
+}
