@@ -1,5 +1,6 @@
 # Homepage (Root path)
 require 'pry'
+use Rack::MethodOverride
 
 def get_file_name(title, image_name)
   name = title.gsub(/\s+/,'_').downcase
