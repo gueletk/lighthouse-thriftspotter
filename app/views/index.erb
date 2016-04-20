@@ -2,7 +2,10 @@
 <% @items.each do |item| %>
   <% @item = item %>
   <div class="col-md-3">
-    <%= item.title %>
+
+
+<img src='<%=@item.image_path%>'>
+
   </div>
   <% end %> 
 </div>

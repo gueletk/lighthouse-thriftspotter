@@ -5,7 +5,7 @@ def get_file_name(title, image_name)
   name = title.gsub(/\s+/,'_').downcase
   extension = /\..*/.match(image_name)[0]
   timestamp = Time.now.getutc.to_i.to_s
-  "./public/images/#{name}_#{timestamp}#{extension}"
+  "/images/#{name}_#{timestamp}#{extension}"
 end
 
 get '/' do
@@ -40,7 +40,7 @@ post '/items/new' do
 
   file = params[:image][:tempfile]
 
-  File.open(@item.image_path, 'wb') do |f|
+  File.open("./public#{@item.image_path}", 'wb') do |f|
     f.write(file.read)
   end
 
@@ -66,3 +66,4 @@ end
 get '/users/profile' do
   erb :'users/profile'
 end
+
