@@ -1,5 +1,6 @@
 # Homepage (Root path)
 get '/' do
+  @items = Item.all
   erb :index
 end
 #
@@ -28,9 +29,10 @@ post '/items/new' do
     user_id: params[:user_id]
   )
   if @item.save
-    redirect 'items/show'
+    redirect 'index'
   else
     redirect 'items/new'
+  end
 end
 
 get '/items/show' do
