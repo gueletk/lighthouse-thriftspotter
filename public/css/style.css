@@ -6,8 +6,19 @@ body {
   color: #0a2929;
   font-size: 16px; }
 
-h1 {
+h1, h2 {
   font-family: "Bevan", cursive; }
+
+h3 {
+  font-weight: 700; }
+
+a {
+  color: #33cccc;
+  transition: opacity .3s; }
+  a:hover, a:focus {
+    color: #33cccc;
+    opacity: .6;
+    text-decoration: none; }
 
 .logo {
   font-family: "Bevan", cursive;
@@ -44,6 +55,13 @@ h1 {
 .mock {
   background-color: #33cccc;
   min-height: 300px;
+  margin-bottom: 20px;
+  transition: opacity .3s;
+  padding: 20px; }
+
+.mock-small {
+  background-color: #33cccc;
+  height: 150px;
   margin-bottom: 20px;
   transition: opacity .3s;
   padding: 20px; }
