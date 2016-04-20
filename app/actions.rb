@@ -13,3 +13,7 @@ end
 get '/items/show' do
   erb :'items/show'
 end
+
+get '/users/signup' do
+  erb :'users/signup'
+end
