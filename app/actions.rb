@@ -1,10 +1,7 @@
 # Homepage (Root path)
 require 'pry'
-<<<<<<< Updated upstream
-=======
 require 'bcrypt'
 use Rack::MethodOverride
->>>>>>> Stashed changes
 
 def get_file_name(title, image_name)
   name = title.gsub(/\s+/,'_').downcase
