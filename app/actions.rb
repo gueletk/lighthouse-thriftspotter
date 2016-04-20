@@ -1,5 +1,6 @@
 # Homepage (Root path)
 require 'pry'
+use Rack::MethodOverride
 
 def get_file_name(title, image_name)
   name = title.gsub(/\s+/,'_').downcase
@@ -57,6 +58,23 @@ end
 
 get '/users/signup' do
   erb :'users/signup'
+end
+
+post '/users/signup' do
+  password_salt = BCrypt::Engine.generate_salt
+  password_hash = BCrypt::Engine.hash_secret(params[:password], password_salt)
+  @user = User.new(
+    username: params[:username],
+    name: params[:name],
+    email: params[:email],
+    password_salt: password_salt,
+    password_hash: password_hash
+  )
+  if @user.save
+    redirect '/login'
+  else
+    redirect '/signup'
+  end
 end
 
 get '/users/login' do
