@@ -21,3 +21,7 @@ end
 get '/users/login' do
   erb :'users/login'
 end
+
+get '/users/profile' do
+  erb :'users/profile'
+end

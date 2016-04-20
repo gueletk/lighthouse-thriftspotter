@@ -13,10 +13,24 @@ body {
   font-size:16px;
 }
 
-h1 {
+h1, h2 {
   font-family: $displayFont;
 }
 
+h3 {
+  font-weight:700;
+}
+
+a {
+  color:$blueColor;
+  transition:opacity .3s;
+  &:hover, 
+  &:focus {
+    color:$blueColor; 
+    opacity:.6;
+    text-decoration: none; 
+  }
+}
 .logo {
   font-family: $displayFont;
   color: $mainColor;
@@ -66,6 +80,15 @@ h1 {
   transition:opacity .3s;
   padding:20px;
 }
+
+.mock-small {
+  background-color: $blueColor;
+  height:150px;
+  margin-bottom:20px;
+  transition:opacity .3s;
+  padding:20px;
+}
+
 
 .btn {
   font-weight:700;
