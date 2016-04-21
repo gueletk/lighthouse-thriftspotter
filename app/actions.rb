@@ -28,6 +28,7 @@ get '/' do
 end
 
 get '/items/new' do
+  redirect '/users/login' unless logged_in_user
   @item = Item.new(
     title: params[:title],
     description: params[:description],
