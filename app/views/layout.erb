@@ -171,6 +171,51 @@
                   .html('')
                   .parents('.form-group').addClass('hide');
           });
+          $('#loginForm')
+              .bootstrapValidator({
+                  message: 'This value is not valid',
+                  feedbackIcons: {
+                      valid: 'glyphicon glyphicon-ok',
+                      invalid: 'glyphicon glyphicon-remove',
+                      validating: 'glyphicon glyphicon-refresh'
+                  },
+                  fields: {
+
+                      username: {
+                          message: 'The username is not valid',
+                          validators: {
+                              notEmpty: {
+                                  message: 'Please enter you username'
+                              }
+                          }
+                      },
+                     password: {
+                         message: 'The password is not valid',
+                         validators: {
+                             notEmpty: {
+                                 message: 'Please enter your password'
+                             }
+                         }
+                     }
+                     
+                  }
+              })
+              .on('error.field.bv', function(e, data) {
+                  var messages = data.bv.getMessages(data.field);
+                  $('#errors').find('li[data-bv-for="' + data.field + '"]').remove();
+                  for (var i in messages) {
+                      $('<li/>').attr('data-bv-for', data.field).html(messages[i]).appendTo('#errors');
+                  }
+                  $('#errors').parents('.form-group').removeClass('hide');
+              })
+              .on('success.field.bv', function(e, data) {
+                  $('#errors').find('li[data-bv-for="' + data.field + '"]').remove();
+              })
+              .on('success.form.bv', function(e) {
+                  $('#errors')
+                      .html('')
+                      .parents('.form-group').addClass('hide');
+              });
   });
   </script>
 </body>
