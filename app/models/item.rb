@@ -1,3 +1,4 @@
+require 'pry'
 class Item < ActiveRecord::Base
 
   belongs_to :user
@@ -10,5 +11,10 @@ class Item < ActiveRecord::Base
   validates :description, length: { maximum: 300, too_long: "%{count} characters is the maximum allowed" }
   validates :location, length: { maximum: 50, too_long: "%{count} characters is the maximum allowed" }
   validates :price, numericality: { only_integer: true, greater_than: 0, :allow_blank => true }
+
+  def num_likes
+    likes = Like.group(:item_id).count[id]
+    likes ? likes : 0
+  end
 
 end

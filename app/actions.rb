@@ -127,7 +127,7 @@ end
 
 get '/users/logout' do
   logged_in_user.session_token = nil
-  sessions[:session_token] = nil
+  session[:session_token] = nil
 end
 
 get '/users/:id' do
@@ -138,5 +138,3 @@ end
 get '/test' do
   erb :test
 end
-
-
