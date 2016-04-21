@@ -97,6 +97,10 @@ a {
   border-radius: 0px;
 }
 
+.btn-lg {
+  width:100%;
+}
+
 .form-group-lg {
   .form-control {
     border-radius:0px;
@@ -120,6 +124,13 @@ a {
   fill: transparent;
 }
 
+.icon.is-liked{
+  stroke:  $heartColor;
+  stroke-width: 2px;
+  fill: $heartColor;
+}
+
+
 
 .icon.is-hoverable:hover{
   fill: $heartColor;
@@ -131,7 +142,6 @@ a {
   cursor: pointer;
 }
 
-
 .icon.is-transit{
    -webkit-transition: all .35s ease-out;
   -moz-transition: all .35s ease-out;
@@ -140,12 +150,10 @@ a {
   transition: all .35s ease-out;
 }
 
-
 #container {
  width: 100%;
  margin: 0 auto;
 }
-
 
 .grid-sizer, .masonryImage {
     width:32.5%;
@@ -249,4 +257,30 @@ a {
     }
   }
 }
+
+@media (max-width: 990px) {
+  .grid-sizer, .masonryImage {
+    width:49.3%;
+  }
+
+}
+
+@media (max-width: 665px) {
+  .grid-sizer, .masonryImage {
+    width:100%;
+  }
+}
+
+@media (max-width: 550px) {
+  .logo {
+    font-size:50px;
+  }
+}
+
+@media (max-width: 550px) {
+  .logo {
+    font-size:40px;
+  }
+}
+
 

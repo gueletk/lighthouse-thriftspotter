@@ -43,13 +43,13 @@
   <div class="container">
 
     <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-8">
       <a href="<%= uri('/') %>" class="logo"><span class="glyphicon glyphicon-search"></span> thriftspotting</a></a>
-      <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>        
+      <p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>        
 
     </div>
-    <div class="col-md-4"></div>
-    <div class="col-md-2">
+    <div class="col-md-1"></div>
+    <div class="col-md-3">
 
         <a href="<%= uri('/users/signup') %>" type="button" class="btn btn-default btn-lg">SIGN UP NOW</a>
 
@@ -69,11 +69,12 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
+  <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
   <script src="/javascript/masonry.pkgd.min.js"></script> 
   <script src="/javascript/application.js"></script>
   <script>
-  $('.collapse').collapse('toggle');
+    $('.collapse').collapse('toggle');
+    
     $('.image-popup-fit-width').magnificPopup({
       type: 'image',
       closeOnContentClick: true,
