@@ -12,7 +12,6 @@ gem 'puma'
 gem 'tux'
 gem 'bcrypt'
 gem 'database_cleaner'
-gem 'securerandom'
 
 group :development, :test do
   gem 'pry'
