@@ -50,15 +50,18 @@ post '/items/new' do
     title: params[:title],
     description: params[:description],
     price: params[:price],
-    image_path: get_file_name(params[:title], params[:image][:filename]),
     location: params[:location],
     user_id: logged_in_user.id
   )
 
-  file = params[:image][:tempfile]
+  @item.image_path =  get_file_name(params[:title], params[:image][:filename]) if params[:image]
 
-  File.open("./public#{@item.image_path}", 'wb') do |f|
-    f.write(file.read)
+  if params[:image]
+    file = params[:image][:tempfile]
+
+    File.open("./public#{@item.image_path}", 'wb') do |f|
+      f.write(file.read)
+    end
   end
 
   if @item.save
@@ -121,4 +124,3 @@ get '/users/:id' do
   @user = User.find_by(id: params[:id])
   erb :'users/profile'
 end
-
