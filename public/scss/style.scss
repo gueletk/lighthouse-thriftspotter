@@ -124,6 +124,13 @@ a {
   fill: transparent;
 }
 
+.icon.is-liked{
+  stroke:  $heartColor;
+  stroke-width: 2px;
+  fill: $heartColor;
+}
+
+
 
 .icon.is-hoverable:hover{
   fill: $heartColor;
