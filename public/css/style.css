@@ -78,6 +78,10 @@ a {
   height: 32px;
   fill: #ccc; }
 
+.icon.is-x2 {
+  width: 64px;
+  height: 64px; }
+
 .icon.is-outlined {
   stroke: #FE4365;
   stroke-width: 2px;
@@ -97,5 +101,88 @@ a {
   -ms-transition: all .35s ease-out;
   -o-transition: all .35s ease-out;
   transition: all .35s ease-out; }
+
+#container {
+  width: 100%;
+  margin: 0 auto; }
+
+.grid-sizer, .masonryImage {
+  width: 32.5%; }
+  .grid-sizer img, .masonryImage img {
+    width: 100%; }
+
+.masonryImage {
+  margin-bottom: 10px;
+  z-index: 1; }
+
+.show-item:hover {
+  opacity: 1; }
+
+.item-details {
+  padding: 10px 20px;
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .2s;
+  width: 100%;
+  text-shadow: 1px 1px 2px black; }
+  .item-details h3 {
+    font-family: "Bevan", cursive;
+    font-weight: normal;
+    margin-top: 0px;
+    z-index: 4;
+    color: white; }
+  .item-details p {
+    color: white; }
+
+.show-item:hover > .item-details {
+  visibility: visible;
+  opacity: 1;
+  top: 10%;
+  z-index: 5; }
+
+.details-image {
+  width: 100%; }
+
+.likes {
+  font-weight: 700;
+  color: #FE4365; }
+
+.plus {
+  opacity: .7;
+  position: absolute;
+  padding: 10px;
+  font-size: 40px;
+  top: 0px;
+  left: 20px;
+  color: white;
+  text-shadow: 1px 1px 2px black; }
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-toggle .icon-bar {
+    background-color: white; }
+
+  .navbar-toggle .icon-bar {
+    width: 30px;
+    height: 5px;
+    border-radius: 0px; }
+
+  .navbar-default .navbar-toggle {
+    border: 0; }
+
+  .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: transparent; }
+
+  .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border: 0; }
+
+  .navbar-nav {
+    float: right;
+    text-align: right; }
+
+  .post-btn {
+    background-color: transparent; }
+    .post-btn:hover {
+      background-color: transparent; } }
 
 /*# sourceMappingURL=style.css.map */

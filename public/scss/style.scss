@@ -3,8 +3,10 @@
 
 $mainColor:#0a2929;
 $blueColor:#33cccc;
+$heartColor:#FE4365;
 $mainFont:"Source Sans", sans-serif;
 $displayFont: 'Bevan', cursive;
+$enable-flex: true;
 
 body {
   font-family:$mainFont;
@@ -107,17 +109,20 @@ a {
   fill: #ccc;
 }
 
-
+.icon.is-x2{
+  width: 64px;
+  height: 64px;
+}
 
 .icon.is-outlined{
-  stroke:  #FE4365;
+  stroke:  $heartColor;
   stroke-width: 2px;
   fill: transparent;
 }
 
 
 .icon.is-hoverable:hover{
-  fill: #FE4365;
+  fill: $heartColor;
   cursor: pointer;
 }
 
@@ -134,3 +139,111 @@ a {
   -o-transition: all .35s ease-out;
   transition: all .35s ease-out;
 }
+
+
+#container {
+ width: 100%;
+ margin: 0 auto;
+}
+
+
+.grid-sizer, .masonryImage {
+    width:32.5%;
+    img {
+      width:100%;
+    }
+  }  
+
+.masonryImage {
+  margin-bottom:10px;
+  z-index: 1;
+} 
+
+.show-item {
+  &:hover {
+    opacity:1;
+  }
+}
+
+
+.item-details {
+  padding:10px 20px;
+  position:absolute;
+  visibility:hidden;
+  opacity:0;
+  transition: opacity .2s;
+  width:100%;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+
+    h3 {
+      font-family:$displayFont;
+      font-weight: normal;
+      margin-top:0px;
+      z-index:4;
+      color:white;
+    }
+    p {
+      color:white;
+    }
+}
+
+.show-item:hover > .item-details {
+    visibility: visible;
+    opacity:1;
+    top:10%;
+    z-index: 5;
+} 
+
+.details-image {
+  width:100%;
+}
+
+.likes {
+  font-weight:700;
+  color:$heartColor;
+}
+
+.plus {
+  opacity:.7;
+  position: absolute;
+  padding: 10px;
+  font-size: 40px;
+  top: 0px;
+  left: 20px;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+
+}
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-toggle .icon-bar {
+      background-color: white;
+  }
+
+  .navbar-toggle .icon-bar {
+    width: 30px;
+    height: 5px;
+    border-radius: 0px;
+  }
+  .navbar-default .navbar-toggle {
+      border: 0;
+  }
+  .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+      background-color: transparent;
+  }
+  .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+     border:0;
+  }
+
+  .navbar-nav {
+      float: right;
+      text-align: right;
+  }
+  .post-btn {
+    background-color:transparent;
+    &:hover{
+     background-color:transparent;
+    }
+  }
+}
+

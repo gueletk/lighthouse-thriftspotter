@@ -4,15 +4,31 @@
     <h1 class="text-center"><%= @item.title %></h1>
     <hr>
     <div class="row">
-      <div class="col-md-4">
-        <div class="mock"></div>
+      <div class="col-md-6">
+        <a class="image-popup-fit-width hoverZoomLink" href="<%=@item.image_path%>" title="<%=@item.title%>">
+          <img src="<%=@item.image_path%>" class="details-image">
+          <span class="plus glyphicon glyphicon-plus"></span>
+        </a>
+        
+        
       </div>
-      <div class="col-md-8">
-      <svg class="icon is-outlined is-hoverable is-transit is-activeable" viewBox="0 0 32 32">
-        <use xlink:href="#heart-icon"></use>
-      </svg>
-        <p><strong>Price</strong>: <%= @item.price %></p>
-        <p><strong>Location</strong>: <%= @item.location%></p>
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-3">
+            <p class="text-center">
+            <svg class="icon is-x2 is-outlined is-hoverable is-transit is-activeable" viewBox="0 0 32 32">
+              <use xlink:href="#heart-icon"></use>
+            </svg>
+            </p>
+            <p class="likes text-center">45 Likes</p>
+          </div>
+
+          <div class="col-md-9">
+            <p><strong>Price</strong>: $<%= @item.price %></p>
+            <p><strong>Location</strong>: <%= @item.location%></p>
+          </div>
+
+        </div>  
         <p>
           <%= @item.description %>
         </p>
