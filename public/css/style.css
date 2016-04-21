@@ -183,6 +183,8 @@ a {
   .post-btn {
     background-color: transparent; }
     .post-btn:hover {
-      background-color: transparent; } }
+      background-color: transparent !important; }
+    .post-btn:focus {
+      background-color: transparent !important; } }
 
 /*# sourceMappingURL=style.css.map */
