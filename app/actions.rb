@@ -5,8 +5,9 @@ use Rack::MethodOverride
 enable :sessions
 
 helpers do
-  def logged_in?
-    session[:session_token] ? true : false
+  def logged_in_user
+    return false unless session[:session_token]
+    user = User.find_by(session_token: session[:session_token])
   end
 end
 
