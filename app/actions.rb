@@ -9,6 +9,10 @@ helpers do
     return false unless session[:session_token]
     user = User.find_by(session_token: session[:session_token])
   end
+
+  def flash
+    @flash ||= FlashMessage.new(session)
+  end
 end
 
 def get_file_name(title, image_name)
@@ -58,6 +62,7 @@ post '/items/new' do
   end
 
   if @item.save
+    flash.message = "Item created successfully"
     redirect '/'
   else
     redirect 'items/new'
