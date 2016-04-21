@@ -12,7 +12,7 @@
           <span class="glyphicon glyphicon-search"></span> Spots
         </a>
       </p>
-      
+
       <p class="profile-nav text-right">
         <a href="#likes">
           <svg class="icon is-liked" viewBox="0 0 32 32">
@@ -21,7 +21,7 @@
           Likes
         </a>
       </p>
-        
+
       </div>
     </div>
 
@@ -40,7 +40,7 @@
         </div>
         <div class="col-md-2">
         <p class="text-center">
-        <svg class="icon is-x2 is-outlined is-hoverable is-transit is-activeable" viewBox="0 0 32 32">
+        <svg class="icon is-x2 is-liked is-hoverable is-transit is-activeable" viewBox="0 0 32 32">
           <use xlink:href="#heart-icon"></use>
         </svg>
         </p>
@@ -50,8 +50,7 @@
       <hr>
     <% end %>
     <a name="likes"></a><h1>Likes</h1>
-    this will be liked items
-    <% @user.items.each do |item| %>
+    <% @user.liked_items.each do |item| %>
       <div class="row">
         <div class="col-md-4">
             <img src="<%=item.image_path%>" class="details-image" alt="<%= item.title%>" title="<%= item.title%>">
@@ -63,7 +62,7 @@
         </div>
         <div class="col-md-2">
         <p class="text-center">
-        <svg class="icon is-x2 is-outlined is-hoverable is-transit is-activeable" viewBox="0 0 32 32">
+        <svg class="icon is-x2 is-liked is-hoverable is-transit is-activeable" viewBox="0 0 32 32">
           <use xlink:href="#heart-icon"></use>
         </svg>
         </p>
