@@ -82,28 +82,64 @@
       }
     });
 
-    var $container = $('#container').masonry({
-      percentPosition: true,
-      itemSelector: '.masonryImage',
-      columnWidth: '.grid-sizer',
-      gutter:10
-    });
-    // layout Masonry after each image loads
-    $container.imagesLoaded().progress( function() {
-      $container.masonry('layout');
-    });
+    if($("#container").length > 0){
+      var $container = $('#container').masonry({
+        percentPosition: true,
+        itemSelector: '.masonryImage',
+        columnWidth: '.grid-sizer',
+        gutter:10
+      });
+      // layout Masonry after each image loads
+      $container.imagesLoaded().progress( function() {
+        $container.masonry('layout');
+      });
+    }
 
-    //Like button functionality
+    // like button listener
+    $(".like-button").click(function(ev){
+      var like_button = $(this);
+      var user_id = $("#user-id").attr("data-user-id");
+      var item_id = $(this).attr("data-item-id");
+      var likes_url = 'http://localhost:3000/likes/' + String(item_id)
 
-    $like = $(".like-button");
+      if (/(^|\s)is-liked(\s|$)/.test(like_button.attr("class"))){
+        like_button.attr('class', like_button.attr("class").replace(" is-liked", ""));
+        $.post(likes_url, {
+          item_id: item_id,
+          user_id: user_id
+        })
+        .then(function(resp){
 
-    $like.click(function()
-      if (this.hasClass("is-liked")){
-        
+        })
+        .fail(function(err){
+          console.log("FAILED to post", err);
+        });
+        // $.ajax({
+        //   url: likes_url,
+        //   type: 'DELETE',
+        //   item_id: item_id,
+        //   user_id: user_id
+        // })
+        // .then(function(resp){
+        //   like_button.attr('class', like_button.attr("class").replace(" is-liked", ""));
+        //   console.log(like_button.attr('class'));
+        // })
+        // .fail(function(err){
+        //   console.log("FAILED to post", err);
+        // });
       } else {
-
+        like_button.attr('class', like_button.attr("class") + ' is-liked');
+        $.post(likes_url, {
+          item_id: item_id,
+          user_id: user_id
+        })
+        .then(function(resp){
+        })
+        .fail(function(err){
+          console.log("FAILED to post", err);
+        });
       }
-    );
+    });
 
     //End like button
 

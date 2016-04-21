@@ -1,6 +1,7 @@
 class Item < ActiveRecord::Base
 
   belongs_to :user
+  has_many :likes, :dependent => :delete_all
 
   validates_presence_of :title, :description, :location
   #validate presence of user once login functionality is set
