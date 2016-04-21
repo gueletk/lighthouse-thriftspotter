@@ -52,7 +52,8 @@ post '/items/new' do
   end
 end
 
-get '/items/show' do
+get '/items/:id' do
+  @item = Item.find params[:id]
   erb :'items/show'
 end
 
