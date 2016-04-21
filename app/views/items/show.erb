@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-md-6">
         <a class="image-popup-fit-width hoverZoomLink" href="<%=@item.image_path%>" title="<%=@item.title%>">
-          <img src="<%=@item.image_path%>" class="details-image">
+          <img src="<%=@item.image_path%>" class="details-image" alt="<%= @item.title%>" title="<%= @item.title%>">
           <span class="plus glyphicon glyphicon-plus"></span>
         </a>
 
