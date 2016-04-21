@@ -1,26 +1,77 @@
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-8">
-    <h1 class="text-center">Welcome, <%= @user.username %></h1>
-    <p class="text-center"><%= @user.email %></p>
+    <div class="row">
+      <div class="col-md-6">
+        <h1 class="text-left"><%= @user.username %></h1>
+        <p class="text-left"><%= @user.name %> | <%= @user.email %></p>
+      </div>
+      <div class="col-md-6">
+      <p class="profile-nav text-right">
+        <a href="#spots">
+          <span class="glyphicon glyphicon-search"></span> Spots
+        </a>
+      </p>
+      
+      <p class="profile-nav text-right">
+        <a href="#likes">
+          <svg class="icon is-liked" viewBox="0 0 32 32">
+            <use xlink:href="#heart-icon"></use>
+          </svg>
+          Likes
+        </a>
+      </p>
+        
+      </div>
+    </div>
+
     <hr>
-    <h2 class="text-center">Your Spots</h2>
-    <hr>
+    <a name="spots"></a><h1>Spots</h1>
 
     <% @user.items.each do |item| %>
       <div class="row">
         <div class="col-md-4">
-          <div style="height:150px"class="mock-small"></div>
+            <img src="<%=item.image_path%>" class="details-image" alt="<%= item.title%>" title="<%= item.title%>">
         </div>
-        <div class="col-md-8">
+        <div class="col-md-6">
           <h3><a href="<%= uri('/items') %>"><%= item.title %></a></h3>
-          <p><strong>Price: $</strong><%= item.price %></p>
-          <p><strong>Location: </strong><%= item.location %></p>
+          <p><strong>Price</strong>: $<%= item.price %></p>
+          <p><strong>Location</strong>: <%= item.location %></p>
+        </div>
+        <div class="col-md-2">
+        <p class="text-center">
+        <svg class="icon is-x2 is-outlined is-hoverable is-transit is-activeable" viewBox="0 0 32 32">
+          <use xlink:href="#heart-icon"></use>
+        </svg>
+        </p>
+        <p class="likes text-center">45 Likes</p>
         </div>
       </div>
       <hr>
     <% end %>
-
+    <a name="likes"></a><h1>Likes</h1>
+    this will be liked items
+    <% @user.items.each do |item| %>
+      <div class="row">
+        <div class="col-md-4">
+            <img src="<%=item.image_path%>" class="details-image" alt="<%= item.title%>" title="<%= item.title%>">
+        </div>
+        <div class="col-md-6">
+          <h3><a href="<%= uri('/items') %>"><%= item.title %></a></h3>
+          <p><strong>Price</strong>: $<%= item.price %></p>
+          <p><strong>Location</strong>: <%= item.location %></p>
+        </div>
+        <div class="col-md-2">
+        <p class="text-center">
+        <svg class="icon is-x2 is-outlined is-hoverable is-transit is-activeable" viewBox="0 0 32 32">
+          <use xlink:href="#heart-icon"></use>
+        </svg>
+        </p>
+        <p class="likes text-center">45 Likes</p>
+        </div>
+      </div>
+      <hr>
+    <% end %>
     </div>
   </div>
   <div class="col-md-2"></div>
