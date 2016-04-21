@@ -105,9 +105,26 @@ a {
 .grid-sizer, .masonryImage {
   width: 32.5%; }
   .grid-sizer img, .masonryImage img {
-    width: 100%; }
+    width: 100%;
+    transition: opacity .1s; }
 
 .masonryImage {
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  z-index: 1; }
+
+.item-details {
+  display: none;
+  transition: display .5s;
+  width: 100%; }
+  .item-details h3 {
+    color: white;
+    text-shadow: 1px 1px 2px black; }
+    .item-details h3:hover {
+      opacity: 1; }
+
+.show-item:hover > .item-details {
+  display: block;
+  position: absolute;
+  z-index: 5; }
 
 /*# sourceMappingURL=style.css.map */
