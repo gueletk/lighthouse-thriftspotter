@@ -100,17 +100,18 @@ post '/users/signup' do
 end
 
 get '/users/login' do
+  @user = User.new
   erb :'users/login'
 end
 
 post '/users/login' do
-  user = User.find_by(username: params[:username])
-  redirect '/users/login' unless user
-  if user && check_password(user, params[:password])
+  @user = User.find_by(username: params[:username])
+  if @user && check_password(@user, params[:password])
     session[:session_token] = SecureRandom.urlsafe_base64()
-    user.update!(session_token: session[:session_token])
+    @user.update!(session_token: session[:session_token])
     redirect '/'
   else
+    flash.message = "Wrong Username/Password combination, please try again."
     redirect '/users/login'
   end
 end
