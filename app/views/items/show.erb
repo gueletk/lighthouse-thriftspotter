@@ -1,3 +1,4 @@
+<span data-user-id="<%= logged_in_user.id %>" id="user-id"></span>
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-8">
@@ -9,14 +10,14 @@
           <img src="<%=@item.image_path%>" class="details-image" alt="<%= @item.title%>" title="<%= @item.title%>">
           <span class="plus glyphicon glyphicon-plus"></span>
         </a>
-        
-        
+
+
       </div>
       <div class="col-md-6">
         <div class="row">
           <div class="col-md-3">
             <p class="text-center">
-            <svg class="icon is-x2 is-outlined is-hoverable is-transit is-activeable" viewBox="0 0 32 32">
+            <svg class="icon is-x2 is-outlined is-hoverable is-transit is-activeable like-button<%= " is-liked" if logged_in_user.has_liked(@item) %>" viewBox="0 0 32 32" data-item-id="<%=@item.id%>">
               <use xlink:href="#heart-icon"></use>
             </svg>
             </p>
@@ -28,7 +29,7 @@
             <p><strong>Location</strong>: <%= @item.location%></p>
           </div>
 
-        </div>  
+        </div>
         <p>
           <%= @item.description %>
         </p>
