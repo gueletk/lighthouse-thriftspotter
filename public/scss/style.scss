@@ -1,10 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Bevan);
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700);
 
 $mainColor:#0a2929;
 $blueColor:#33cccc;
 $heartColor:#FE4365;
-$mainFont:"Source Sans", sans-serif;
+$mainFont:'Helvetica', sans-serif;
 $displayFont: 'Bevan', cursive;
 $enable-flex: true;
 
@@ -15,8 +14,13 @@ body {
   font-size:16px;
 }
 
+h1 {
+  font-size:50px;
+}
+
 h1, h2 {
   font-family: $displayFont;
+
 }
 
 h3 {
@@ -220,7 +224,34 @@ a {
   left: 20px;
   color: white;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+}
 
+.profile-nav {
+  font-size:28px;
+  font-weight:700;
+}
+
+
+.bv-form .help-block {
+    margin-bottom: 0;
+}
+.bv-form .tooltip-inner {
+    text-align: left;
+}
+.nav-tabs li.bv-tab-success > a {
+    color: #3c763d;
+}
+.nav-tabs li.bv-tab-error > a {
+    color: #a94442;
+}
+
+.bv-form .bv-icon-no-label {
+  top: 0;
+}
+
+.bv-form .bv-icon-input-group {
+  top: 0;
+  z-index: 100;
 }
 
 @media (max-width: 767px) {

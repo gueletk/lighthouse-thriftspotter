@@ -7,6 +7,7 @@
 
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/magnific.css">
+  <link rel="stylesheet" href="/css/bootstrapValidator.css"/>
 
 
 
@@ -70,8 +71,11 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
+  <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
   <script src="/javascript/masonry.pkgd.min.js"></script>
+  <script src="/javascript/bootstrapValidator.min.js"></script>
   <script src="/javascript/application.js"></script>
+
   <script>
   $('.collapse').collapse('toggle');
     $('.image-popup-fit-width').magnificPopup({
@@ -143,6 +147,80 @@
 
     //End like button
 
+  </script>
+
+  <script type="text/javascript">
+  $(document).ready(function() {
+      $('#postNewSpot')
+          .bootstrapValidator({
+              message: 'This value is not valid',
+              feedbackIcons: {
+                  valid: 'glyphicon glyphicon-ok',
+                  invalid: 'glyphicon glyphicon-remove',
+                  validating: 'glyphicon glyphicon-refresh'
+              },
+              fields: {
+
+                  title: {
+                      message: 'The title is not valid',
+                      validators: {
+                          notEmpty: {
+                              message: 'Please enter a title'
+                          },
+                          stringLength: {
+                              max: 50,
+                              message: 'Character limit of 50'
+                          }
+                      }
+                  },
+                 description: {
+                     message: 'The description is not valid',
+                     validators: {
+                         notEmpty: {
+                             message: 'Please enter a description'
+                         },
+                         stringLength: {
+                             max: 300,
+                             message: 'Character limit of 300'
+                         }
+                     }
+                 },
+                  image: {
+                      message: 'The image is not valid',
+                      validators: {
+                          notEmpty: {
+                              message: 'Please upload an image'
+                          }
+                      }
+                  },
+                  location: {
+                      message: 'The image is not valid',
+                      validators: {
+                          notEmpty: {
+                              message: 'Please enter a location'
+                          }
+                      }
+                  },
+
+              }
+          })
+          .on('error.field.bv', function(e, data) {
+              var messages = data.bv.getMessages(data.field);
+              $('#errors').find('li[data-bv-for="' + data.field + '"]').remove();
+              for (var i in messages) {
+                  $('<li/>').attr('data-bv-for', data.field).html(messages[i]).appendTo('#errors');
+              }
+              $('#errors').parents('.form-group').removeClass('hide');
+          })
+          .on('success.field.bv', function(e, data) {
+              $('#errors').find('li[data-bv-for="' + data.field + '"]').remove();
+          })
+          .on('success.form.bv', function(e) {
+              $('#errors')
+                  .html('')
+                  .parents('.form-group').addClass('hide');
+          });
+  });
   </script>
 </body>
 </html>

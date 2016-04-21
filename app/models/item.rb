@@ -3,7 +3,7 @@ class Item < ActiveRecord::Base
   belongs_to :user
   has_many :likes, :dependent => :delete_all
 
-  validates_presence_of :title, :description, :location
+  validates_presence_of :title, :description, :location, :image_path
   #validate presence of user once login functionality is set
 
   validates :title, length: { maximum: 50, too_long: "%{count} characters is the maximum allowed" }
