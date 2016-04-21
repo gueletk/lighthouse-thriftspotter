@@ -5,6 +5,7 @@ $mainColor:#0a2929;
 $blueColor:#33cccc;
 $mainFont:"Source Sans", sans-serif;
 $displayFont: 'Bevan', cursive;
+$enable-flex: true;
 
 body {
   font-family:$mainFont;
@@ -134,3 +135,24 @@ a {
   -o-transition: all .35s ease-out;
   transition: all .35s ease-out;
 }
+
+
+#container {
+ width: 100%;
+ margin: 0 auto;
+}
+
+
+.grid-sizer, .masonryImage {
+    width:32.5%;
+    img {
+      width:100%;
+    }
+  }  
+
+.masonryImage {
+  margin-bottom:10px;
+} 
+
+
+
