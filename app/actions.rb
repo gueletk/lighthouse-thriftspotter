@@ -26,9 +26,6 @@ get '/' do
   @items = Item.all.order(created_at: :desc)
   erb :index
 end
-#
-# password_digest, null: false
-# session_token
 
 get '/items/new' do
   @item = Item.new(
@@ -37,19 +34,20 @@ get '/items/new' do
     image_path: params[:image_path],
     price: params[:price],
     location: params[:location],
-    user_id: params[:user_id]
+    user_id: logged_in_user.id
   )
   erb :'items/new'
 end
 
 post '/items/new' do
+  redirect '/login' unless logged_in_user
   @item = Item.new(
     title: params[:title],
     description: params[:description],
     price: params[:price],
     image_path: get_file_name(params[:title], params[:image][:filename]),
     location: params[:location],
-    user_id: params[:user_id]
+    user_id: logged_in_user.id
   )
 
   file = params[:image][:tempfile]
@@ -101,17 +99,18 @@ post '/users/login' do
   if user && check_password(user, params[:password])
     session[:session_token] = SecureRandom.urlsafe_base64()
     user.update!(session_token: session[:session_token])
-    redirect '/logged_in'
+    redirect '/'
   else
     redirect '/users/login'
   end
 end
 
-get '/logged_in' do
-  erb :"/loggedin"
+get '/users/logout' do
+  logged_in_user.session_token = nil
+  sessions[:session_token] = nil
 end
 
-
-get '/users/profile' do
+get '/users/:id' do
+  @user = User.find_by(id: params[:id])
   erb :'users/profile'
 end
