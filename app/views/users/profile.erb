@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-8">
-    <h1 class="text-center">Welcome, Jane Doe</h1>
-    <p class="text-center">jdoe@gmail.com</p>
+    <h1 class="text-center">Welcome, <%= @user.username %></h1>
+    <p class="text-center"><%= @user.email %></p>
     <hr>
     <h2 class="text-center">Your Spots</h2>
     <hr>
@@ -16,7 +16,7 @@
         <p><strong>Location</strong>: Value Village</p>
       </div>
     </div>
-    <hr>    
+    <hr>
     <div class="row">
       <div class="col-md-4">
         <div style="height:150px"class="mock-small"></div>
@@ -27,7 +27,7 @@
         <p><strong>Location</strong>: Goodwill</p>
       </div>
     </div>
-    <hr>  
+    <hr>
     <div class="row">
       <div class="col-md-4">
         <div style="height:150px"class="mock-small"></div>
@@ -38,9 +38,9 @@
         <p><strong>Location</strong>: Salvation Army</p>
       </div>
     </div>
-    <hr>  
+    <hr>
 
-    
+
 
 
     </div>
