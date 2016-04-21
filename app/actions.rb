@@ -3,6 +3,12 @@ require 'pry'
 require 'bcrypt'
 use Rack::MethodOverride
 
+helpers do
+  def logged_in?
+    session[:session_token] ? true : false
+  end
+end
+
 def get_file_name(title, image_name)
   name = title.gsub(/\s+/,'_').downcase
   extension = /\..*/.match(image_name)[0]
