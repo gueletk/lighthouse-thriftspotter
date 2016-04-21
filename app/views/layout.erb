@@ -72,14 +72,12 @@
   <script src="/javascript/masonry.pkgd.min.js"></script> 
   <script src="/javascript/application.js"></script>
   <script>
-  $('.image-popup-vertical-fit').magnificPopup({
+    $('.image-popup-fit-width').magnificPopup({
       type: 'image',
       closeOnContentClick: true,
-      mainClass: 'mfp-img-mobile',
       image: {
-        verticalFit: true
+        verticalFit: false
       }
-      
     });
 
     var $container = $('#container').masonry({
