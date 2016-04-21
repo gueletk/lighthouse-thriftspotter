@@ -5,7 +5,10 @@
     <hr>
     <div class="row">
       <div class="col-md-4">
-        <img class="details-image" src="<%=@item.image_path%>">
+        <a class="image-popup-vertical-fit hoverZoomLink" href="<%=@item.image_path%>" title="<%=@item.title%>">
+          <img src="<%=@item.image_path%>" class="details-image">
+        </a>
+        
         
       </div>
       <div class="col-md-8">

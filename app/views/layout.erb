@@ -4,11 +4,8 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-
-  <!--
-    application.css is where you put your styles
-  -->
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/magnific.css">
 
 
 
@@ -75,6 +72,16 @@
   <script src="/javascript/masonry.pkgd.min.js"></script> 
   <script src="/javascript/application.js"></script>
   <script>
+  $('.image-popup-vertical-fit').magnificPopup({
+      type: 'image',
+      closeOnContentClick: true,
+      mainClass: 'mfp-img-mobile',
+      image: {
+        verticalFit: true
+      }
+      
+    });
+
     var $container = $('#container').masonry({
       percentPosition: true,
       itemSelector: '.masonryImage',
