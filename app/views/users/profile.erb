@@ -1,48 +1,25 @@
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-8">
-    <h1 class="text-center">Welcome, Jane Doe</h1>
-    <p class="text-center">jdoe@gmail.com</p>
+    <h1 class="text-center">Welcome, <%= @user.username %></h1>
+    <p class="text-center"><%= @user.email %></p>
     <hr>
     <h2 class="text-center">Your Spots</h2>
     <hr>
-    <div class="row">
-      <div class="col-md-4">
-        <div style="height:150px"class="mock-small"></div>
-      </div>
-      <div class="col-md-8">
-        <h3><a href="<%= uri('/items/show') %>">A Really Cool Thing</a></h3>
-        <p><strong>Price</strong>: $14.56</p>
-        <p><strong>Location</strong>: Value Village</p>
-      </div>
-    </div>
-    <hr>    
-    <div class="row">
-      <div class="col-md-4">
-        <div style="height:150px"class="mock-small"></div>
-      </div>
-      <div class="col-md-8">
-        <h3><a href="<%= uri('/items/show') %>">Another Cool Thing</a></h3></p>
-        <p><strong>Price</strong>: $12</p>
-        <p><strong>Location</strong>: Goodwill</p>
-      </div>
-    </div>
-    <hr>  
-    <div class="row">
-      <div class="col-md-4">
-        <div style="height:150px"class="mock-small"></div>
-      </div>
-      <div class="col-md-8">
-        <h3><a href="<%= uri('/items/show') %>">A Slightly Less Cool Thing</a></h3></p>
-        <p><strong>Price</strong>: $10.50</p>
-        <p><strong>Location</strong>: Salvation Army</p>
-      </div>
-    </div>
-    <hr>  
 
-    
-
-
+    <%= @user.items.each do |item| %>
+      <div class="row">
+        <div class="col-md-4">
+          <div style="height:150px"class="mock-small"></div>
+        </div>
+        <div class="col-md-8">
+          <h3><a href="<%= uri('/items/<%= item.id %>') %>"><%= item.title %></a></h3>
+          <p><strong>Price: $</strong><%= item.price %></p>
+          <p><strong>Location: </strong><%= item.location %></p>
+        </div>
+      </div>
+      <hr>
+    <%= end %>
     </div>
   </div>
   <div class="col-md-2"></div>
