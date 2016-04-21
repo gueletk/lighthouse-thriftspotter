@@ -158,4 +158,31 @@ a {
   color: white;
   text-shadow: 1px 1px 2px black; }
 
+@media (max-width: 767px) {
+  .navbar-default .navbar-toggle .icon-bar {
+    background-color: white; }
+
+  .navbar-toggle .icon-bar {
+    width: 30px;
+    height: 5px;
+    border-radius: 0px; }
+
+  .navbar-default .navbar-toggle {
+    border: 0; }
+
+  .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: transparent; }
+
+  .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border: 0; }
+
+  .navbar-nav {
+    float: right;
+    text-align: right; }
+
+  .post-btn {
+    background-color: transparent; }
+    .post-btn:hover {
+      background-color: transparent; } }
+
 /*# sourceMappingURL=style.css.map */
