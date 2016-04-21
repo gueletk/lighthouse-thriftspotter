@@ -2,7 +2,7 @@ class Item < ActiveRecord::Base
 
   belongs_to :user
 
-  validates_presence_of :title, :description, :location
+  validates_presence_of :title, :description, :location, :image_path
   #validate presence of user once login functionality is set
 
   validates :title, length: { maximum: 50, too_long: "%{count} characters is the maximum allowed" }
