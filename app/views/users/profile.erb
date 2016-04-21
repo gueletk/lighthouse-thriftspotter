@@ -6,19 +6,21 @@
     <hr>
     <h2 class="text-center">Your Spots</h2>
     <hr>
-    <%= @user.items.each do |item| %>
+
+    <% @user.items.each do |item| %>
       <div class="row">
         <div class="col-md-4">
           <div style="height:150px"class="mock-small"></div>
         </div>
         <div class="col-md-8">
-          <h3><a href="<%= uri('/items/<%= item.id %>') %>"><%= item.title %></a></h3>
+          <h3><a href="<%= uri('/items') %>"><%= item.title %></a></h3>
           <p><strong>Price: $</strong><%= item.price %></p>
           <p><strong>Location: </strong><%= item.location %></p>
         </div>
       </div>
       <hr>
-    <%= end %>
+    <% end %>
+
     </div>
   </div>
   <div class="col-md-2"></div>
