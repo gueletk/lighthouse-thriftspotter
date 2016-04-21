@@ -148,4 +148,14 @@ a {
   font-weight: 700;
   color: #FE4365; }
 
+.plus {
+  opacity: .7;
+  position: absolute;
+  padding: 10px;
+  font-size: 40px;
+  top: 0px;
+  left: 20px;
+  color: white;
+  text-shadow: 1px 1px 2px black; }
+
 /*# sourceMappingURL=style.css.map */

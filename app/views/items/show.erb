@@ -4,14 +4,15 @@
     <h1 class="text-center"><%= @item.title %></h1>
     <hr>
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-6">
         <a class="image-popup-vertical-fit hoverZoomLink" href="<%=@item.image_path%>" title="<%=@item.title%>">
           <img src="<%=@item.image_path%>" class="details-image">
+          <span class="plus glyphicon glyphicon-plus"></span>
         </a>
         
         
       </div>
-      <div class="col-md-8">
+      <div class="col-md-6">
         <div class="row">
           <div class="col-md-3">
             <p class="text-center">
@@ -23,7 +24,7 @@
           </div>
 
           <div class="col-md-9">
-            <p><strong>Price</strong>: <%= @item.price %></p>
+            <p><strong>Price</strong>: $<%= @item.price %></p>
             <p><strong>Location</strong>: <%= @item.location%></p>
           </div>
 
