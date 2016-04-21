@@ -70,6 +70,9 @@ a {
   font-weight: 700;
   border-radius: 0px; }
 
+.btn-lg {
+  width: 100%; }
+
 .form-group-lg .form-control {
   border-radius: 0px; }
 
@@ -186,5 +189,17 @@ a {
       background-color: transparent !important; }
     .post-btn:focus {
       background-color: transparent !important; } }
+@media (max-width: 990px) {
+  .grid-sizer, .masonryImage {
+    width: 49.3%; } }
+@media (max-width: 665px) {
+  .grid-sizer, .masonryImage {
+    width: 100%; } }
+@media (max-width: 550px) {
+  .logo {
+    font-size: 50px; } }
+@media (max-width: 550px) {
+  .logo {
+    font-size: 40px; } }
 
 /*# sourceMappingURL=style.css.map */
