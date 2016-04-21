@@ -90,6 +90,11 @@ a {
   stroke-width: 2px;
   fill: transparent; }
 
+.icon.is-liked {
+  stroke: #FE4365;
+  stroke-width: 2px;
+  fill: #FE4365; }
+
 .icon.is-hoverable:hover {
   fill: #FE4365;
   cursor: pointer; }
