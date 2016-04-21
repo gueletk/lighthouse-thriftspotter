@@ -45,7 +45,7 @@
     <div class="row">
     <div class="col-md-6">
       <a href="<%= uri('/') %>" class="logo"><span class="glyphicon glyphicon-search"></span> thriftspotting</a></a>
-      <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>        
+      <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 
     </div>
     <div class="col-md-4"></div>
@@ -70,7 +70,7 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-  <script src="/javascript/masonry.pkgd.min.js"></script> 
+  <script src="/javascript/masonry.pkgd.min.js"></script>
   <script src="/javascript/application.js"></script>
   <script>
   $('.collapse').collapse('toggle');
@@ -92,6 +92,20 @@
     $container.imagesLoaded().progress( function() {
       $container.masonry('layout');
     });
+
+    //Like button functionality
+
+    $like = $(".like-button");
+
+    $like.click(function()
+      if (this.hasClass("is-liked")){
+
+      } else {
+
+      }
+    );
+
+    //End like button
 
   </script>
 </body>
