@@ -2,12 +2,17 @@
 require 'pry'
 require 'bcrypt'
 use Rack::MethodOverride
+enable :sessions
 
 def get_file_name(title, image_name)
   name = title.gsub(/\s+/,'_').downcase
   extension = /\..*/.match(image_name)[0]
   timestamp = Time.now.getutc.to_i.to_s
   "./public/images/#{name}_#{timestamp}#{extension}"
+end
+
+def check_password(user, password)
+  user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
 end
 
 get '/' do
@@ -82,6 +87,23 @@ end
 get '/users/login' do
   erb :'users/login'
 end
+
+post '/users/login' do
+  user = User.find_by(username: params[:username])
+  redirect '/users/login' unless user
+  if user && check_password(user, params[:password])
+    session[:session_token] = SecureRandom.urlsafe_base64()
+    user.update!(session_token: session[:session_token])
+    redirect '/logged_in'
+  else
+    redirect '/users/login'
+  end
+end
+
+get '/logged_in' do
+  erb :"/loggedin"
+end
+
 
 get '/users/profile' do
   erb :'users/profile'
