@@ -107,22 +107,34 @@
     $(".like-button").click(function(ev){
       var like_button = $(this);
       var user_id = $("#user-id").attr("data-user-id");
+      
+      // Return unless user logged in
+      if (!user_id) return;
+
       var item_id = $(this).attr("data-item-id");
-      var likes_url = 'http://localhost:3000/likes/' + String(item_id)
+      var likes_url = 'http://localhost:3000/likes'
 
       if (/(^|\s)is-liked(\s|$)/.test(like_button.attr("class"))){
-        like_button.attr('class', like_button.attr("class").replace(" is-liked", ""));
-        $(".likes-count").text(String(parseInt($(".likes-count").text(), 10) - 1));
-        $.post(likes_url, {
-          item_id: item_id,
-          user_id: user_id
-        })
-        .then(function(resp){
 
+        like_button.attr('class', like_button.attr("class").replace(" is-liked", ""));
+        
+        $(".likes-count").text(String(parseInt($(".likes-count").text(), 10) - 1));
+        
+        $.post(
+          likes_url, 
+          {
+            item_id: item_id,
+            user_id: user_id
+          },
+          'json'
+        )
+        .done(function(resp){
+          console.log("Successful", resp);
         })
         .fail(function(err){
           console.log("FAILED to post", err);
         });
+        
         // $.ajax({
         //   url: likes_url,
         //   type: 'DELETE',
