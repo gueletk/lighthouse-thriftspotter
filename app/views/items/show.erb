@@ -5,7 +5,7 @@
     <h1 class="text-center"><%= @item.title %></h1>
     <hr>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-5">
         <a class="image-popup-fit-width hoverZoomLink" href="<%=@item.image_path%>" title="<%=@item.title%>">
           <img src="<%=@item.image_path%>" class="details-image" alt="<%= @item.title%>" title="<%= @item.title%>">
           <span class="plus glyphicon glyphicon-plus"></span>
@@ -13,7 +13,7 @@
 
 
       </div>
-      <div class="col-md-6">
+      <div class="col-md-7">
         <div class="row">
           <div class="col-md-3">
             <p class="text-center">
@@ -34,7 +34,47 @@
         <p>
           <%= @item.description %>
         </p>
+
       </div>
+    </div>
+    <hr>
+
+    <div class="row">
+      <div class="col-md-12">
+       <h3><a href="">kristin</a></h3>
+       <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.
+
+       I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so.</p>
+       
+       <h3><a href="">someone else</a></h3>
+       <p>O my friend -- but it is too much for my strength -- I sink under the weight of the splendour of these visions! A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
+
+       <h3><a href="">ksenia</a></h3>
+       <p>O my friend -- but it is too much for my strength -- I sink under the weight of the splendour of these visions! A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>     
+      </div>
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+
+    
+
+
+        <form id="postNewComment" class="form-horizontal" method="post" action="/items/comment" enctype='multipart/form-data'>
+
+            <div class="form-group form-group-lg">
+              <div class="col-sm-12">
+                <textarea rows="4" name="text" class="form-control" maxlength="300" required ></textarea>
+              </div>
+            </div>
+
+            <div class="form-group form-group-lg">
+              <div class="col-sm-12">
+                <button type="submit" class="btn btn-default btn-lg">POST A COMMENT</button>
+              </div>
+            </div>
+        </form>
+      </div>
+      <div class="col-md-2"></div>
+
     </div>
   </div>
   <div class="col-md-2"></div>
