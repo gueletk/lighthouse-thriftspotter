@@ -136,9 +136,9 @@
     });
 
     Finditem.defaults = $.extend({}, $.fn.editabletypes.abstractinput.defaults, {
-        tpl: '<div class="editable-finditem"><label><span>Title: </span><input type="text" name="title" class="input-small"></label></div>'+
-             '<div class="editable-finditem"><label><span>Price: </span><input type="text" name="price" class="input-small"></label></div>'+
-             '<div class="editable-finditem"><label><span>Location: </span><input type="text" name="location" class="input-mini"></label></div>',
+        tpl: '<div class="form-group"><label><input type="text" name="title" class="form-control" ></label></div>'+
+             '<div class="form-group"><label><input type="text" name="price" class="form-control" ></label></div>'+
+             '<div class="form-group"><label><input type="text" name="location" class="form-control" ></label></div>',
 
         inputclass: ''
     });
