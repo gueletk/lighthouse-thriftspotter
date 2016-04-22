@@ -8,8 +8,8 @@
       </div>
       <div class="col-md-6">
       <p class="profile-nav text-right">
-        <a href="#spots">
-          <span class="glyphicon glyphicon-search"></span> Spots (<%= @user.items.length%>)
+        <a href="#finds">
+          <span class="glyphicon glyphicon-search"></span> Finds (<%= @user.items.length%>)
         </a>
       </p>
 
@@ -26,7 +26,7 @@
     </div>
 
     <hr>
-    <a name="spots"></a><h1>Spots</h1>
+    <a name="finds"></a><h1>Finds</h1>
     <% if @user.items == [] %>
       <p>Post some finds!</p>
     <% end %>
