@@ -140,6 +140,7 @@ end
 get '/users/logout' do
   logged_in_user.session_token = nil
   session[:session_token] = nil
+  redirect "/"
 end
 
 get '/users/:id' do
