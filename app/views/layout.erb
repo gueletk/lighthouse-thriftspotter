@@ -155,22 +155,6 @@
                  
               }
           })
-          .on('error.field.bv', function(e, data) {
-              var messages = data.bv.getMessages(data.field);
-              $('#errors').find('li[data-bv-for="' + data.field + '"]').remove();
-              for (var i in messages) {
-                  $('<li/>').attr('data-bv-for', data.field).html(messages[i]).appendTo('#errors');
-              }
-              $('#errors').parents('.form-group').removeClass('hide');
-          })
-          .on('success.field.bv', function(e, data) {
-              $('#errors').find('li[data-bv-for="' + data.field + '"]').remove();
-          })
-          .on('success.form.bv', function(e) {
-              $('#errors')
-                  .html('')
-                  .parents('.form-group').addClass('hide');
-          });
           $('#loginForm')
               .bootstrapValidator({
                   message: 'This value is not valid',
@@ -200,22 +184,85 @@
                      
                   }
               })
-              .on('error.field.bv', function(e, data) {
-                  var messages = data.bv.getMessages(data.field);
-                  $('#errors').find('li[data-bv-for="' + data.field + '"]').remove();
-                  for (var i in messages) {
-                      $('<li/>').attr('data-bv-for', data.field).html(messages[i]).appendTo('#errors');
-                  }
-                  $('#errors').parents('.form-group').removeClass('hide');
-              })
-              .on('success.field.bv', function(e, data) {
-                  $('#errors').find('li[data-bv-for="' + data.field + '"]').remove();
-              })
-              .on('success.form.bv', function(e) {
-                  $('#errors')
-                      .html('')
-                      .parents('.form-group').addClass('hide');
-              });
+              $('#signupForm')
+                  .bootstrapValidator({
+                      message: 'This value is not valid',
+                      feedbackIcons: {
+                          valid: 'glyphicon glyphicon-ok',
+                          invalid: 'glyphicon glyphicon-remove',
+                          validating: 'glyphicon glyphicon-refresh'
+                      },
+                      fields: {
+
+                          email: {
+                              message: 'The email is not valid',
+                              validators: {
+                                  notEmpty: {
+                                      message: 'Please enter your email address'
+                                  }
+                              }
+                          },
+                          name: {
+                              message: 'The name is not valid',
+                              validators: {
+                                  notEmpty: {
+                                      message: 'Please enter your name'
+                                  }
+                              }
+                          },
+                          username: {
+                              message: 'The username is not valid',
+                              validators: {
+                                  notEmpty: {
+                                      message: 'Please enter your username'
+                                  }
+                              }
+                          },
+                          password: {
+                              message: 'The password is not valid',
+                              validators: {
+                                  notEmpty: {
+                                      message: 'Please enter your password'
+                                  },
+                                  identical: {
+                                      field: 'password_confirmation',
+                                      message: 'Password confirmation was not a match'
+                                  }
+                              }
+                          },
+                          password_confirmation: {
+                              message: 'The username is not valid',
+                              validators: {
+                                  notEmpty: {
+                                      message: 'Please enter your password confirmation'
+                                  },
+                                  identical: {
+                                      field: 'password',
+                                      message: 'Password confirmation was not a match'
+                                  }
+                              }
+                          },
+                         
+                      }
+                  })
+          .on('error.field.bv', function(e, data) {
+              var messages = data.bv.getMessages(data.field);
+              $('#errors').find('li[data-bv-for="' + data.field + '"]').remove();
+              for (var i in messages) {
+                  $('<li/>').attr('data-bv-for', data.field).html(messages[i]).appendTo('#errors');
+              }
+              $('#errors').parents('.form-group').removeClass('hide');
+          })
+          .on('success.field.bv', function(e, data) {
+              $('#errors').find('li[data-bv-for="' + data.field + '"]').remove();
+          })
+          .on('success.form.bv', function(e) {
+              $('#errors')
+                  .html('')
+                  .parents('.form-group').addClass('hide');
+          });
+ 
+              
   });
   </script>
 </body>
