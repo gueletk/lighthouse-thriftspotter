@@ -39,12 +39,7 @@
           <p><strong>Location</strong>: <%= item.location %></p>
         </div>
         <div class="col-md-2">
-        <p class="text-center">
-        <svg class="icon is-x2 is-liked is-hoverable is-transit is-activeable" viewBox="0 0 32 32">
-          <use xlink:href="#heart-icon"></use>
-        </svg>
-        </p>
-        <p class="likes text-center">45 Likes</p>
+          <%= erb :_like_button, locals: { item: item } %>
         </div>
       </div>
       <hr>
@@ -61,12 +56,7 @@
           <p><strong>Location</strong>: <%= item.location %></p>
         </div>
         <div class="col-md-2">
-        <p class="text-center">
-        <svg class="icon is-x2 is-liked is-hoverable is-transit is-activeable" viewBox="0 0 32 32">
-          <use xlink:href="#heart-icon"></use>
-        </svg>
-        </p>
-        <p class="likes text-center">45 Likes</p>
+          <%= erb :_like_button, locals: { item: item } %>
         </div>
       </div>
       <hr>

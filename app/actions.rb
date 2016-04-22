@@ -6,7 +6,7 @@ enable :sessions
 
 helpers do
   def logged_in_user
-    return false unless session[:session_token]
+    return User.new unless session[:session_token]
     user = User.find_by(session_token: session[:session_token])
   end
 
@@ -79,12 +79,13 @@ get '/items/:id' do
   # { :user_id => logged_in_user.id, :item_id => @item.id }.to_json
 end
 
-post '/likes/:item_id' do
+post '/likes' do
   if like = Like.find_by(item_id: params[:item_id], user_id: logged_in_user.id)
     like.destroy
   else
     Like.create(user_id: logged_in_user.id, item_id: params[:item_id])
   end
+  {status: ok}.to_json
 end
 
 post '/items/:id' do

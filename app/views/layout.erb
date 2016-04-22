@@ -14,6 +14,11 @@
   <title>thriftspotting</title>
 </head>
 <body>
+  <% if logged_in_user %>
+    <span data-user-id="<%= logged_in_user.id %>" id="user-id"></span>
+  <% else %>
+    <span data-user-id="" id="user-id"></span>
+  <% end %>
 
     <svg height="0" width="0" style="position:absolute;margin-left: -100%;">
 <path id="heart-icon" d="M16,28.261c0,0-14-7.926-14-17.046c0-9.356,13.159-10.399,14-0.454c1.011-9.938,14-8.903,14,0.454
@@ -35,8 +40,13 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><a class="post-btn" href="<%= uri('/items/new') %>">Post a Spot</a></li>
-          <li><a href="<%= uri('/users/login') %>">Log In</a></li>
+          <% if logged_in_user %>
+            <li><a class="post-btn" href="<%= uri('/items/new') %>">Post a Spot</a></li>
+            <li><a class="post-btn" href="<%= uri('/users/logout') %>">Log Out</a></li>
+            <li>Logged in as: <a href="<%= uri("/users/#{logged_in_user.id}") %>"><%= logged_in_user.username %></a></li>
+          <% else %>
+            <li><a href="<%= uri('/users/login') %>">Log In</a></li>
+          <% end %>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -51,9 +61,9 @@
     </div>
     <div class="col-md-4"></div>
     <div class="col-md-2">
-
+    <% if !logged_in_user %>
         <a href="<%= uri('/users/signup') %>" type="button" class="btn btn-default btn-lg">SIGN UP NOW</a>
-
+    <% end %>
     </div>
     </div>
 
@@ -103,22 +113,35 @@
     $(".like-button").click(function(ev){
       var like_button = $(this);
       var user_id = $("#user-id").attr("data-user-id");
+
+      // Return unless user logged in
+      if (!user_id) return;
+
       var item_id = $(this).attr("data-item-id");
-      var likes_url = 'http://localhost:3000/likes/' + String(item_id)
-
+      var likes_url = 'http://localhost:3000/likes'
+      console.log(String(item_id));
+      console.log($(this).siblings(".likes-count-" + String(item_id)).text());
       if (/(^|\s)is-liked(\s|$)/.test(like_button.attr("class"))){
-        like_button.attr('class', like_button.attr("class").replace(" is-liked", ""));
-        $(".likes-count").text(String(parseInt($(".likes-count").text(), 10) - 1));
-        $.post(likes_url, {
-          item_id: item_id,
-          user_id: user_id
-        })
-        .then(function(resp){
 
+        like_button.attr('class', like_button.attr("class").replace(" is-liked", ""));
+
+        $(".likes-count-" + String(item_id)).text(String(parseInt($(this).siblings(".likes-count-" + String(item_id)).text()) - 1));
+
+        $.post(
+          likes_url,
+          {
+            item_id: item_id,
+            user_id: user_id
+          },
+          'json'
+        )
+        .done(function(resp){
+          console.log("Successful", resp);
         })
         .fail(function(err){
           console.log("FAILED to post", err);
         });
+
         // $.ajax({
         //   url: likes_url,
         //   type: 'DELETE',
@@ -134,7 +157,7 @@
         // });
       } else {
         like_button.attr('class', like_button.attr("class") + ' is-liked');
-        $(".likes-count").text(String(parseInt($(".likes-count").text(), 10) + 1));
+        $(".likes-count-" + String(item_id)).text(String(parseInt($(this).siblings(".likes-count-" + String(item_id)).text()) + 1));
         $.post(likes_url, {
           item_id: item_id,
           user_id: user_id
@@ -233,7 +256,7 @@
                              }
                          }
                      }
-                     
+
                   }
               })
               $('#signupForm')
@@ -294,7 +317,7 @@
                                   }
                               }
                           },
-                         
+
                       }
                   })
           .on('error.field.bv', function(e, data) {
@@ -313,8 +336,8 @@
                   .html('')
                   .parents('.form-group').addClass('hide');
           });
- 
-              
+
+
   });
   </script>
 </body>
