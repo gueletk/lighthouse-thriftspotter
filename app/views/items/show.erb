@@ -41,28 +41,23 @@
 
     <div class="row">
       <div class="col-md-12">
-       <h3><a href="">kristin</a></h3>
-       <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.
 
-       I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so.</p>
+      <% @item.comments.each do |comment| %>
+        <h3><a href="/users/<%=comment.user_id%>"><%= comment.user.username %></a></h3>
+        <p><%=comment.text%></p>
+      <% end %>
+
        
-       <h3><a href="">someone else</a></h3>
-       <p>O my friend -- but it is too much for my strength -- I sink under the weight of the splendour of these visions! A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
-
-       <h3><a href="">ksenia</a></h3>
-       <p>O my friend -- but it is too much for my strength -- I sink under the weight of the splendour of these visions! A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>     
       </div>
+      <% if logged_in_user %>
       <div class="col-md-2"></div>
       <div class="col-md-8">
 
-    
-
-
-        <form id="postNewComment" class="form-horizontal" method="post" action="/items/comment" enctype='multipart/form-data'>
+        <form id="postNewComment" class="form-horizontal" method="post" action="/items/<%=@item.id%>" enctype='multipart/form-data'>
 
             <div class="form-group form-group-lg">
               <div class="col-sm-12">
-                <textarea rows="4" name="text" class="form-control" maxlength="300" required ></textarea>
+                <textarea rows="4" name="text" class="form-control" maxlength="300" required></textarea>
               </div>
             </div>
 
@@ -74,7 +69,7 @@
         </form>
       </div>
       <div class="col-md-2"></div>
-
+      <% end %>
     </div>
   </div>
   <div class="col-md-2"></div>
