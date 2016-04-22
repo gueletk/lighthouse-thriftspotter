@@ -75,6 +75,16 @@ end
 get '/items/:id' do
   @item = Item.find params[:id]
   erb :'items/show'
+  # content_type 'application/json'
+  # { :user_id => logged_in_user.id, :item_id => @item.id }.to_json
+end
+
+post '/likes/:item_id' do
+  if like = Like.find_by(item_id: params[:item_id], user_id: logged_in_user.id)
+    like.destroy
+  else
+    Like.create(user_id: logged_in_user.id, item_id: params[:item_id])
+  end
 end
 
 get '/users/signup' do
@@ -118,7 +128,7 @@ end
 
 get '/users/logout' do
   logged_in_user.session_token = nil
-  sessions[:session_token] = nil
+  session[:session_token] = nil
 end
 
 get '/users/:id' do
@@ -129,5 +139,3 @@ end
 get '/test' do
   erb :test
 end
-
-

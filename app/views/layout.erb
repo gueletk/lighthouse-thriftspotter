@@ -44,13 +44,13 @@
   <div class="container">
 
     <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-6">
       <a href="<%= uri('/') %>" class="logo"><span class="glyphicon glyphicon-search"></span> thriftspotting</a></a>
-      <p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>        
+      <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 
     </div>
-    <div class="col-md-1"></div>
-    <div class="col-md-3">
+    <div class="col-md-4"></div>
+    <div class="col-md-2">
 
         <a href="<%= uri('/users/signup') %>" type="button" class="btn btn-default btn-lg">SIGN UP NOW</a>
 
@@ -70,15 +70,14 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
   <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
   <script src="/javascript/masonry.pkgd.min.js"></script>
   <script src="/javascript/bootstrapValidator.min.js"></script>
-
   <script src="/javascript/application.js"></script>
 
   <script>
-    $('.collapse').collapse('toggle');
-    
+  $('.collapse').collapse('toggle');
     $('.image-popup-fit-width').magnificPopup({
       type: 'image',
       closeOnContentClick: true,
@@ -87,16 +86,69 @@
       }
     });
 
-    var $container = $('#container').masonry({
-      percentPosition: true,
-      itemSelector: '.masonryImage',
-      columnWidth: '.grid-sizer',
-      gutter:10
+    if($("#container").length > 0){
+      var $container = $('#container').masonry({
+        percentPosition: true,
+        itemSelector: '.masonryImage',
+        columnWidth: '.grid-sizer',
+        gutter:10
+      });
+      // layout Masonry after each image loads
+      $container.imagesLoaded().progress( function() {
+        $container.masonry('layout');
+      });
+    }
+
+    // like button listener
+    $(".like-button").click(function(ev){
+      var like_button = $(this);
+      var user_id = $("#user-id").attr("data-user-id");
+      var item_id = $(this).attr("data-item-id");
+      var likes_url = 'http://localhost:3000/likes/' + String(item_id)
+
+      if (/(^|\s)is-liked(\s|$)/.test(like_button.attr("class"))){
+        like_button.attr('class', like_button.attr("class").replace(" is-liked", ""));
+        $(".likes-count").text(String(parseInt($(".likes-count").text(), 10) - 1));
+        $.post(likes_url, {
+          item_id: item_id,
+          user_id: user_id
+        })
+        .then(function(resp){
+
+        })
+        .fail(function(err){
+          console.log("FAILED to post", err);
+        });
+        // $.ajax({
+        //   url: likes_url,
+        //   type: 'DELETE',
+        //   item_id: item_id,
+        //   user_id: user_id
+        // })
+        // .then(function(resp){
+        //   like_button.attr('class', like_button.attr("class").replace(" is-liked", ""));
+        //   console.log(like_button.attr('class'));
+        // })
+        // .fail(function(err){
+        //   console.log("FAILED to post", err);
+        // });
+      } else {
+        like_button.attr('class', like_button.attr("class") + ' is-liked');
+        $(".likes-count").text(String(parseInt($(".likes-count").text(), 10) + 1));
+        $.post(likes_url, {
+          item_id: item_id,
+          user_id: user_id
+        })
+        .then(function(resp){
+
+        })
+        .fail(function(err){
+          console.log("FAILED to post", err);
+        });
+      }
     });
-    // layout Masonry after each image loads
-    $container.imagesLoaded().progress( function() {
-      $container.masonry('layout');
-    });
+
+    //End like button
 
   </script>
 
@@ -135,7 +187,7 @@
                              message: 'Character limit of 300'
                          }
                      }
-                 }, 
+                 },
                   image: {
                       message: 'The image is not valid',
                       validators: {
@@ -143,7 +195,7 @@
                               message: 'Please upload an image'
                           }
                       }
-                  }, 
+                  },
                   location: {
                       message: 'The image is not valid',
                       validators: {
@@ -151,8 +203,8 @@
                               message: 'Please enter a location'
                           }
                       }
-                  }, 
-                 
+                  },
+
               }
           })
           .on('error.field.bv', function(e, data) {
