@@ -1,3 +1,8 @@
-<svg class="icon is-x2 is-outlined is-hoverable is-transit is-activeable like-button<%= " is-liked" if logged_in_user && logged_in_user.has_liked(item) %>" viewBox="0 0 32 32" data-item-id="<%=item.id%>">
-  <use xlink:href="#heart-icon"></use>
-</svg>
+
+
+<p class="text-center">
+  <svg class="icon is-x2 is-outlined is-hoverable is-transit is-activeable like-button<%= " is-liked" if logged_in_user && logged_in_user.has_liked(item) %>" viewBox="0 0 32 32" data-item-id="<%=item.id%>">
+    <use xlink:href="#heart-icon"></use>
+  </svg>
+<span class="likes-count-<%= item.id %>"><%= item.num_likes %></span>
+</p>

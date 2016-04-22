@@ -1,9 +1,3 @@
-<% if logged_in_user %>
-  <span data-user-id="<%= logged_in_user.id %>" id="user-id"></span>
-<% else %>
-  <span data-user-id="" id="user-id"></span>
-<% end %>
-
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-8">
@@ -24,7 +18,6 @@
             <p class="text-center">
               <%= erb :_like_button, locals: { item: @item } %>
             </p>
-            <p class="likes text-center"><div class="likes-count"><%= @item.num_likes %></div> Likes</p>
           </div>
 
           <div class="col-md-9">
