@@ -106,6 +106,16 @@ post '/likes' do
   {status: ok}.to_json
 end
 
+post '/items/:id' do
+  @comment = Comment.create(
+    user_id: logged_in_user.id,
+    item_id: params[:id],
+    text: params[:text]
+    )
+  @comment.save
+  redirect "/"
+end
+
 get '/users/signup' do
   @user = User.new
   erb :'users/signup'

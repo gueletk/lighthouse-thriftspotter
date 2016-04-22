@@ -4,7 +4,7 @@
     <h1 class="text-center"><%= @item.title %></h1>
     <hr>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-5">
         <a class="image-popup-fit-width hoverZoomLink" href="<%=@item.image_path%>" title="<%=@item.title%>">
           <img src="<%=@item.image_path%>" class="details-image" alt="<%= @item.title%>" title="<%= @item.title%>">
           <span class="plus glyphicon glyphicon-plus"></span>
@@ -12,12 +12,14 @@
 
 
       </div>
-      <div class="col-md-6">
+      <div class="col-md-7">
         <div class="row">
           <div class="col-md-3">
             <p class="text-center">
+
               <%= erb :_like_button, locals: { item: @item } %>
             </p>
+
           </div>
 
           <div class="col-md-9">
@@ -30,7 +32,42 @@
         <p>
           <%= @item.description %>
         </p>
+
       </div>
+    </div>
+    <hr>
+
+    <div class="row">
+      <div class="col-md-12">
+
+      <% @item.comments.each do |comment| %>
+        <h3><a href="/users/<%=comment.user_id%>"><%= comment.user.username %></a></h3>
+        <p><%=comment.text%></p>
+      <% end %>
+
+       
+      </div>
+      <% if logged_in_user.id? %>
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+
+        <form id="postNewComment" class="form-horizontal" method="post" action="/items/<%=@item.id%>" enctype='multipart/form-data'>
+
+            <div class="form-group form-group-lg">
+              <div class="col-sm-12">
+                <textarea rows="4" name="text" class="form-control" maxlength="300" required></textarea>
+              </div>
+            </div>
+
+            <div class="form-group form-group-lg">
+              <div class="col-sm-12">
+                <button type="submit" class="btn btn-default btn-lg">POST A COMMENT</button>
+              </div>
+            </div>
+        </form>
+      </div>
+      <div class="col-md-2"></div>
+      <% end %>
     </div>
   </div>
   <div class="col-md-2"></div>
