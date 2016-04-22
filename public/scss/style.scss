@@ -29,11 +29,9 @@ h3 {
 
 a {
   color:$blueColor;
-  transition:opacity .3s;
-  &:hover, 
+   &:hover, 
   &:focus {
     color:$blueColor; 
-    opacity:.6;
     text-decoration: none; 
   }
 }
@@ -103,6 +101,13 @@ a {
 
 .btn-lg {
   width:100%;
+  font-size:30px;
+  border:1px solid $blueColor;
+  transition:background-color .2s;
+  &:hover {
+    border:1px solid $blueColor;
+    background-color:lighten($blueColor,30%);
+  }
 }
 
 .form-group-lg {

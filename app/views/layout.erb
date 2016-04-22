@@ -41,7 +41,7 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <% if logged_in_user.id %>
-            <li><a class="post-btn" href="<%= uri('/items/new') %>">Post a Find</a></li>
+            <li><a class="post-btn" href="<%= uri('/items/new') %>">POST A FIND</a></li>
             <li><a href="<%= uri('/users/logout') %>">Log Out</a></li>
             <li><a href="<%= uri("/users/#{logged_in_user.id}") %>"><span class="glyphicon glyphicon-user"></span> <%= logged_in_user.username %></a></li>
           <% else %>
@@ -59,8 +59,8 @@
       <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 
     </div>
-    <div class="col-md-4"></div>
-    <div class="col-md-2">
+    <div class="col-md-3"></div>
+    <div class="col-md-3">
     <% if !logged_in_user.id %>
         <a href="<%= uri('/users/signup') %>" type="button" class="btn btn-default btn-lg">SIGN UP NOW</a>
     <% end %>
