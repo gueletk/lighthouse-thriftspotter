@@ -108,6 +108,7 @@
 
       if (/(^|\s)is-liked(\s|$)/.test(like_button.attr("class"))){
         like_button.attr('class', like_button.attr("class").replace(" is-liked", ""));
+        $(".likes-count").text(String(parseInt($(".likes-count").text(), 10) - 1));
         $.post(likes_url, {
           item_id: item_id,
           user_id: user_id
@@ -133,11 +134,13 @@
         // });
       } else {
         like_button.attr('class', like_button.attr("class") + ' is-liked');
+        $(".likes-count").text(String(parseInt($(".likes-count").text(), 10) + 1));
         $.post(likes_url, {
           item_id: item_id,
           user_id: user_id
         })
         .then(function(resp){
+
         })
         .fail(function(err){
           console.log("FAILED to post", err);
