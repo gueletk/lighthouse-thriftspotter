@@ -35,8 +35,12 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><a class="post-btn" href="<%= uri('/items/new') %>">Post a Spot</a></li>
-          <li><a href="<%= uri('/users/login') %>">Log In</a></li>
+          <% if logged_in_user %>
+            <li><a class="post-btn" href="<%= uri('/items/new') %>">Post a Spot</a></li>
+            <li>Logged in as: <a href="<%= uri("/users/#{logged_in_user.id}") %>"><%= logged_in_user.username %></a></li>
+          <% else %>
+            <li><a href="<%= uri('/users/login') %>">Log In</a></li>
+          <% end %>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -51,9 +55,9 @@
     </div>
     <div class="col-md-4"></div>
     <div class="col-md-2">
-
+    <% if !logged_in_user %>
         <a href="<%= uri('/users/signup') %>" type="button" class="btn btn-default btn-lg">SIGN UP NOW</a>
-
+    <% end %>
     </div>
     </div>
 
@@ -249,7 +253,7 @@
                              }
                          }
                      }
-                     
+
                   }
               })
               .on('error.field.bv', function(e, data) {

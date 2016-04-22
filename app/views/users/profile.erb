@@ -40,11 +40,9 @@
         </div>
         <div class="col-md-2">
         <p class="text-center">
-        <svg class="icon is-x2 is-liked is-hoverable is-transit is-activeable" viewBox="0 0 32 32">
-          <use xlink:href="#heart-icon"></use>
-        </svg>
+          <%= erb :_like_button, locals: { item: item } %>
         </p>
-        <p class="likes text-center">45 Likes</p>
+        <p class="likes text-center"><div class="likes-count"><%= item.num_likes %></div> Likes</p>
         </div>
       </div>
       <hr>
@@ -62,11 +60,9 @@
         </div>
         <div class="col-md-2">
         <p class="text-center">
-        <svg class="icon is-x2 is-liked is-hoverable is-transit is-activeable" viewBox="0 0 32 32">
-          <use xlink:href="#heart-icon"></use>
-        </svg>
+        <%= erb :_like_button, locals: { item: item } %>
         </p>
-        <p class="likes text-center">45 Likes</p>
+        <p class="likes text-center"><div class="likes-count"><%= item.num_likes %></div> Likes</p>
         </div>
       </div>
       <hr>
