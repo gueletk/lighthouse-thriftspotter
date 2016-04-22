@@ -5,6 +5,10 @@ use Rack::MethodOverride
 enable :sessions
 
 helpers do
+  def logged_in?
+    logged_in_user ? true : false
+  end
+
   def logged_in_user
     return User.new unless session[:session_token]
     user = User.find_by(session_token: session[:session_token])
@@ -32,7 +36,7 @@ get '/' do
 end
 
 get '/items/new' do
-  redirect '/users/login' unless logged_in_user
+  redirect '/users/login' unless logged_in?
   @item = Item.new(
     title: params[:title],
     description: params[:description],
@@ -42,6 +46,12 @@ get '/items/new' do
     user_id: logged_in_user.id
   )
   erb :'items/new'
+end
+
+get '/items/index' do
+  return if !logged_in?
+  @user = logged_in_user
+  erb :'items/index'
 end
 
 post '/items/new' do
@@ -72,9 +82,52 @@ post '/items/new' do
   end
 end
 
+get '/items/edit/:id' do
+  @item = Item.find_by(id: params[:id])
+  erb :'items/edit'
+end
+
+put '/items/:id' do
+  @item = Item.find_by(id: params[:id])
+  puts "request went to the right place"
+  @item.update(
+    title: params[:title],
+    description: params[:description],
+    price: params[:price],
+    location: params[:location],
+    user_id: logged_in_user.id
+  )
+
+  @item.image_path =  get_file_name(params[:title], params[:image][:filename]) if params[:image]
+
+  if params[:image]
+    file = params[:image][:tempfile]
+
+    File.open("./public#{@item.image_path}", 'wb') do |f|
+      f.write(file.read)
+    end
+  end
+
+  if @item.save
+    flash.message = "Item created successfully"
+    redirect '/'
+  else
+    redirect 'items/new'
+  end
+end
+
 get '/items/:id' do
   @item = Item.find params[:id]
   erb :'items/show'
+  # content_type 'application/json'
+  # { :user_id => logged_in_user.id, :item_id => @item.id }.to_json
+end
+
+delete '/items/:id' do
+  @item = Item.find params[:id]
+  return if !@item.belongs_to?(logged_in_user)
+  @item.delete
+  redirect back
   # content_type 'application/json'
   # { :user_id => logged_in_user.id, :item_id => @item.id }.to_json
 end

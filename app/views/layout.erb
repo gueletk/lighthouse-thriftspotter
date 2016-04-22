@@ -41,7 +41,8 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <% if logged_in_user %>
-            <li><a class="post-btn" href="<%= uri('/items/new') %>">Post a Spot</a></li>
+            <li><a class="post-btn" href="<%= uri('/items/new') %>">New Find</a></li>
+            <li><a class="post-btn" href="<%= uri('/items/index') %>">My Finds</a></li>
             <li><a class="post-btn" href="<%= uri('/users/logout') %>">Log Out</a></li>
             <li>Logged in as: <a href="<%= uri("/users/#{logged_in_user.id}") %>"><%= logged_in_user.username %></a></li>
           <% else %>
@@ -108,6 +109,7 @@
         $container.masonry('layout');
       });
     }
+
 
     // like button listener
     $(".like-button").click(function(ev){

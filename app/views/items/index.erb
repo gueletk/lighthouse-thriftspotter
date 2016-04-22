@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="row">
+      <div class="col-md-6">
+        <h1 class="text-left"><%= @user.username %></h1>
+        <p class="text-left"><%= @user.name %> | <%= @user.email %></p>
+      </div>
+      <div class="col-md-6">
+
+      </div>
+    </div>
+
+    <hr>
+    <a name="spots"></a><h1>My Spots</h1>
+
+    <% @user.items.each do |item| %>
+
+    <div class="row">
+      <div class="col-md-4">
+          <img src="<%=item.image_path%>" class="details-image" alt="<%= item.title%>" title="<%= item.title%>">
+      </div>
+      <div class="col-md-4">
+        <h3><a href="<%= uri('/items') %>"><%= item.title %></a></h3>
+        <p><strong>Price</strong>: $<%= item.price %></p>
+        <p><strong>Location</strong>: <%= item.location %></p>
+      </div>
+      <div class="col-md-2">
+        <%= erb :_like_button, locals: { item: item } %>
+      </div>
+      <div class="col-md-2">
+        <div class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Edit <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="/items/edit/<%= item.id %>"><button type="submit" class="btn btn-default btn-lg">Update</button></a></li>
+            <li><form method="post" action="/items/<%= item.id %>"><input type="hidden" name="_method" value="delete"><button type="submit" class="btn btn-default btn-lg">Delete</button></form></li>
+          </ul>
+        </div>
+
+
+
+      </div>
+    </div>
+    <hr>
+    <% end %>
+
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>
+
+<script type="text/javascript">
+  $('#delete-item').onclick="form.submit()";
+</script>

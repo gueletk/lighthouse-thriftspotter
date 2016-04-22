@@ -39,13 +39,14 @@
 
     <div class="row">
       <div class="col-md-12">
+        <% if @item.comments %>
+          <% @item.comments.each do |comment| %>
+            <h3><a href="/users/<%=comment.user_id%>"><%= comment.user.username %></a></h3>
+            <p><%=comment.text%></p>
+          <% end %>
+        <% end %> 
 
-      <% @item.comments.each do |comment| %>
-        <h3><a href="/users/<%=comment.user_id%>"><%= comment.user.username %></a></h3>
-        <p><%=comment.text%></p>
-      <% end %>
 
-       
       </div>
       <% if logged_in_user.id? %>
       <div class="col-md-2"></div>
