@@ -37,6 +37,7 @@
         <ul class="nav navbar-nav navbar-right">
           <% if logged_in_user %>
             <li><a class="post-btn" href="<%= uri('/items/new') %>">Post a Spot</a></li>
+            <li><a class="post-btn" href="<%= uri('/users/logout') %>">Log Out</a></li>
             <li>Logged in as: <a href="<%= uri("/users/#{logged_in_user.id}") %>"><%= logged_in_user.username %></a></li>
           <% else %>
             <li><a href="<%= uri('/users/login') %>">Log In</a></li>
@@ -107,7 +108,7 @@
     $(".like-button").click(function(ev){
       var like_button = $(this);
       var user_id = $("#user-id").attr("data-user-id");
-      
+
       // Return unless user logged in
       if (!user_id) return;
 
@@ -117,11 +118,11 @@
       if (/(^|\s)is-liked(\s|$)/.test(like_button.attr("class"))){
 
         like_button.attr('class', like_button.attr("class").replace(" is-liked", ""));
-        
+
         $(".likes-count").text(String(parseInt($(".likes-count").text(), 10) - 1));
-        
+
         $.post(
-          likes_url, 
+          likes_url,
           {
             item_id: item_id,
             user_id: user_id
@@ -134,7 +135,7 @@
         .fail(function(err){
           console.log("FAILED to post", err);
         });
-        
+
         // $.ajax({
         //   url: likes_url,
         //   type: 'DELETE',
