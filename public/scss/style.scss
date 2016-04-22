@@ -125,7 +125,7 @@ a {
 .icon.is-outlined{
   stroke:  $heartColor;
   stroke-width: 2px;
-  fill: transparent;
+  fill: rgba(255, 255, 255, .6);
 }
 
 .icon.is-liked{
@@ -163,6 +163,7 @@ a {
     width:32.5%;
     img {
       width:100%;
+      opacity:1;
     }
   }  
 
@@ -171,7 +172,7 @@ a {
   z-index: 1;
 } 
 
-.show-item {
+.opaque {
   &:hover {
     opacity:1;
   }
@@ -199,13 +200,21 @@ a {
     }
 }
 
-.show-item:hover > .item-details {
+
+.show-item:hover > .item-details{
     visibility: visible;
     opacity:1;
     top:10%;
     z-index: 5;
 } 
-
+.like-details {
+  position:absolute;
+  right: 10px;
+  bottom:-25px;
+  .likes {
+    color:white;
+  }
+}
 .details-image {
   width:100%;
 }
