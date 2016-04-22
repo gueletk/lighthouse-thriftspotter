@@ -259,6 +259,27 @@
 
                   }
               })
+              $('#postNewComment')
+                  .bootstrapValidator({
+                      message: 'This value is not valid',
+                      feedbackIcons: {
+                          valid: 'glyphicon glyphicon-ok',
+                          invalid: 'glyphicon glyphicon-remove',
+                          validating: 'glyphicon glyphicon-refresh'
+                      },
+                      fields: {
+
+                          text: {
+                              message: 'The text is not valid',
+                              validators: {
+                                  notEmpty: {
+                                      message: 'Please enter a comment'
+                                  }
+                              }
+                          }
+
+                      }
+                  })
               $('#signupForm')
                   .bootstrapValidator({
                       message: 'This value is not valid',
