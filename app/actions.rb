@@ -5,8 +5,12 @@ use Rack::MethodOverride
 enable :sessions
 
 helpers do
+
+  def logged_in?
+    logged_in_user ? true : false
+  end
+
   def logged_in_user
-    return User.new unless session[:session_token]
     user = User.find_by(session_token: session[:session_token])
   end
 
@@ -72,6 +76,20 @@ post '/items/new' do
   end
 end
 
+get '/items/edit' do
+  @user = logged_in_user
+  erb :'items/edit'
+end
+
+post '/items/edit' do
+  puts "server received request to edit"
+end
+
+delete '/items/:id' do
+  return if !logged_in?
+
+end
+
 get '/items/:id' do
   @item = Item.find params[:id]
   erb :'items/show'
@@ -120,7 +138,7 @@ post '/users/login' do
   if @user && check_password(@user, params[:password])
     session[:session_token] = SecureRandom.urlsafe_base64()
     @user.update!(session_token: session[:session_token])
-    redirect '/'
+    redirect back
   else
     flash.message = "Wrong Username/Password combination, please try again."
     redirect '/users/login'
@@ -130,6 +148,7 @@ end
 get '/users/logout' do
   logged_in_user.session_token = nil
   session[:session_token] = nil
+  redirect '/'
 end
 
 get '/users/:id' do

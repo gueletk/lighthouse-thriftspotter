@@ -8,8 +8,7 @@
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/magnific.css">
   <link rel="stylesheet" href="/css/bootstrapValidator.css"/>
-
-
+  <link href="bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet">
 
   <title>thriftspotting</title>
 </head>
@@ -40,9 +39,10 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <% if logged_in_user %>
+          <% if logged_in? %>
             <li><a class="post-btn" href="<%= uri('/items/new') %>">Post a Spot</a></li>
             <li><a class="post-btn" href="<%= uri('/users/logout') %>">Log Out</a></li>
+            <li><a class="post-btn" href="<%= uri('/items/edit') %>">Edit my spots</a></li>
             <li>Logged in as: <a href="<%= uri("/users/#{logged_in_user.id}") %>"><%= logged_in_user.username %></a></li>
           <% else %>
             <li><a href="<%= uri('/users/login') %>">Log In</a></li>
@@ -84,6 +84,9 @@
   <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
   <script src="/javascript/masonry.pkgd.min.js"></script>
   <script src="/javascript/bootstrapValidator.min.js"></script>
+  <script src="/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.js"></script>
+  <script src="/bootstrap-editable/inputs-ext/finditem/finditem.js"></script>
+
   <script src="/javascript/application.js"></script>
 
   <script>
@@ -107,6 +110,11 @@
       $container.imagesLoaded().progress( function() {
         $container.masonry('layout');
       });
+    }
+
+    if ($('#finditem').length > 0){
+      $('#finditem').editable();
+      console.log("#finditem has been made editable")
     }
 
     // like button listener
