@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+
   $('.collapse').collapse('toggle');
     $('.image-popup-fit-width').magnificPopup({
       type: 'image',
