@@ -9,17 +9,14 @@
           <img src="<%=@item.image_path%>" class="details-image" alt="<%= @item.title%>" title="<%= @item.title%>">
           <span class="plus glyphicon glyphicon-plus"></span>
         </a>
-
-
       </div>
+
       <div class="col-md-7">
         <div class="row">
           <div class="col-md-3">
             <p class="text-center">
-
               <%= erb :_like_button, locals: { item: @item } %>
             </p>
-
           </div>
 
           <div class="col-md-9">
@@ -27,27 +24,30 @@
             <p><strong>Price</strong>: $<%= @item.price %></p>
             <p><strong>Location</strong>: <%= @item.location%></p>
           </div>
-
         </div>
+
         <p>
           <%= @item.description %>
         </p>
-
       </div>
     </div>
+
     <hr>
 
     <div class="row">
       <div class="col-md-12">
 
-      <% @item.comments.each do |comment| %>
-        <h3><a href="/users/<%=comment.user_id%>"><%= comment.user.username %></a></h3>
-        <p><%=comment.text%></p>
-      <% end %>
+        <% if @item.comments %>
+          <% @item.comments.each do |comment| %>
+            <h3><a href="/users/<%=comment.user_id%>"><%= comment.user.username %></a></h3>
+            <p><%=comment.text%></p>
+          <% end %>
+        <% end %>
 
-       
       </div>
+
       <% if logged_in_user.id? %>
+
       <div class="col-md-2"></div>
       <div class="col-md-8">
 
@@ -64,6 +64,7 @@
                 <button type="submit" class="btn btn-default btn-lg">POST A COMMENT</button>
               </div>
             </div>
+
         </form>
       </div>
       <div class="col-md-2"></div>
