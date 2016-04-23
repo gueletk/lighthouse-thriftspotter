@@ -16,9 +16,11 @@
 
         <% if logged_in_user.id %>
           <li><a class="post-btn" href="<%= uri('/items/new') %>">POST A FIND</a></li>
-          <li><a class="post-btn" href="<%= uri('/items/index') %>">My Finds</a></li>
-          <li><a href="<%= uri('/users/logout') %>">Log Out</a></li>
+          <li><a href="<%= uri('/items/index') %>">My Finds</a></li>
+          <li><a></a></li>
           <li><a href="<%= uri("/users/#{logged_in_user.id}") %>"><span class="glyphicon glyphicon-user"></span> <%= logged_in_user.username %></a></li>
+          <li><a href="<%= uri('/users/logout') %>">Log Out</a></li>
+
         <% else %>
           <li><a href="<%= uri('/users/login') %>">Log In</a></li>
         <% end %>
