@@ -18,4 +18,8 @@ class Item < ActiveRecord::Base
     likes ? likes : 0
   end
 
+  def belongs_to?(check_user)
+    check_user == user
+  end
+
 end
