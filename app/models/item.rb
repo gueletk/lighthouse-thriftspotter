@@ -6,7 +6,7 @@ class Item < ActiveRecord::Base
 
   validates_presence_of :title, :description, :location, :image_path, :user
 
-  validates :title, :location,
+  validates :title,
     length: { maximum: 50, too_long: "%{count} characters is the maximum allowed" }
   validates :description, length: { maximum: 300, too_long: "%{count} characters is the maximum allowed" }
   validates :price, numericality: { only_integer: true, greater_than: 0, :allow_blank => true }

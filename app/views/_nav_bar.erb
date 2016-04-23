@@ -14,7 +14,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
 
-        <% if logged_in_user.id %>
+        <% if logged_in? %>
           <li><a class="post-btn" href="<%= uri('/items/new') %>">POST A FIND</a></li>
           <li><a href="<%= uri('/items/index') %>">My Finds</a></li>
           <li><a></a></li>

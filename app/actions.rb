@@ -109,7 +109,7 @@ put '/items/:id' do
   end
 
   if @item.save
-    flash.message = "Item created successfully"
+    flash.notice = "Item created successfully"
     redirect '/'
   else
     redirect 'items/new'
