@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/magnific.css">
   <link rel="stylesheet" href="/css/bootstrapValidator.css"/>
 
-
-
   <title>thriftspotting</title>
 </head>
+
 <body>
   <% if logged_in_user %>
     <span data-user-id="<%= logged_in_user.id %>" id="user-id"></span>
@@ -20,349 +18,45 @@
     <span data-user-id="" id="user-id"></span>
   <% end %>
 
-    <svg height="0" width="0" style="position:absolute;margin-left: -100%;">
-<path id="heart-icon" d="M16,28.261c0,0-14-7.926-14-17.046c0-9.356,13.159-10.399,14-0.454c1.011-9.938,14-8.903,14,0.454
-    C30,20.335,16,28.261,16,28.261z"/>
-    </svg>
+  <svg height="0" width="0" style="position:absolute;margin-left: -100%;">
+    <path id="heart-icon" d="M16,28.261c0,0-14-7.926-14-17.046c0-9.356,13.159-10.399,14-0.454c1.011-9.938,14-8.903,14,0.454 C30,20.335,16,28.261,16,28.261z"/>
+  </svg>
 
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
+  <%= erb :_nav_bar %>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-
-          <% if logged_in_user.id %>
-            <li><a class="post-btn" href="<%= uri('/items/new') %>">POST A FIND</a></li>
-            <li><a class="post-btn" href="<%= uri('/items/index') %>">My Finds</a></li>
-            <li><a href="<%= uri('/users/logout') %>">Log Out</a></li>
-            <li><a href="<%= uri("/users/#{logged_in_user.id}") %>"><span class="glyphicon glyphicon-user"></span> <%= logged_in_user.username %></a></li>
-          <% else %>
-            <li><a href="<%= uri('/users/login') %>">Log In</a></li>
-          <% end %>
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
   <div class="container">
 
     <div class="row">
-    <div class="col-md-6">
-      <a href="<%= uri('/') %>" class="logo"><span class="glyphicon glyphicon-search"></span> thriftspotting</a></a>
-      <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
+      <div class="col-md-6">
+        <a href="<%= uri('/') %>" class="logo"><span class="glyphicon glyphicon-search"></span> thriftspotting</a></a>
+        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+      <div class="col-md-3"></div>
+      <div class="col-md-3">
+      <% if !logged_in_user.id %>
+          <a href="<%= uri('/users/signup') %>" type="button" class="btn btn-default btn-lg">SIGN UP NOW</a>
+      <% end %>
+      </div>
     </div>
-    <div class="col-md-3"></div>
-    <div class="col-md-3">
-    <% if !logged_in_user.id %>
-        <a href="<%= uri('/users/signup') %>" type="button" class="btn btn-default btn-lg">SIGN UP NOW</a>
-    <% end %>
+
+    <hr>
+
+    <%= yield %>
+
+    <hr>
+
+    <div class="row">
+      <p class="text-center">&copy; <%= Date.today.year %>. Ksenia Gueletina and Kristin Cheverie.</p>
     </div>
-    </div>
 
-<hr>
-
-
-  <%= yield %>
-
-  <hr>
-  <div class="row">
-  <p class="text-center">&copy; <%= Date.today.year %>. Ksenia Gueletina and Kristin Cheverie.</p>
   </div>
-  </div>
+
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
   <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+  <script src="/javascript/magnific.min.js"></script>
   <script src="/javascript/masonry.pkgd.min.js"></script>
   <script src="/javascript/bootstrapValidator.min.js"></script>
   <script src="/javascript/application.js"></script>
-
-  <script>
-  $('.collapse').collapse('toggle');
-    $('.image-popup-fit-width').magnificPopup({
-      type: 'image',
-      closeOnContentClick: true,
-      image: {
-        verticalFit: false
-      }
-    });
-
-    if($("#container").length > 0){
-      var $container = $('#container').masonry({
-        percentPosition: true,
-        itemSelector: '.masonryImage',
-        columnWidth: '.grid-sizer',
-        gutter:10
-      });
-      // layout Masonry after each image loads
-      $container.imagesLoaded().progress( function() {
-        $container.masonry('layout');
-      });
-    }
-
-
-    // like button listener
-    $(".like-button").click(function(ev){
-      var like_button = $(this);
-      var user_id = $("#user-id").attr("data-user-id");
-
-      // Return unless user logged in
-      if (!user_id) return;
-
-      var item_id = $(this).attr("data-item-id");
-      var likes_url = 'http://localhost:3000/likes'
-      console.log(String(item_id));
-      console.log($(this).siblings(".likes-count-" + String(item_id)).text());
-      if (/(^|\s)is-liked(\s|$)/.test(like_button.attr("class"))){
-
-        like_button.attr('class', like_button.attr("class").replace(" is-liked", ""));
-
-        $(".likes-count-" + String(item_id)).text(String(parseInt($(this).siblings(".likes-count-" + String(item_id)).text()) - 1));
-
-        $.post(
-          likes_url,
-          {
-            item_id: item_id,
-            user_id: user_id
-          },
-          'json'
-        )
-        .done(function(resp){
-          console.log("Successful", resp);
-        })
-        .fail(function(err){
-          console.log("FAILED to post", err);
-        });
-
-        // $.ajax({
-        //   url: likes_url,
-        //   type: 'DELETE',
-        //   item_id: item_id,
-        //   user_id: user_id
-        // })
-        // .then(function(resp){
-        //   like_button.attr('class', like_button.attr("class").replace(" is-liked", ""));
-        //   console.log(like_button.attr('class'));
-        // })
-        // .fail(function(err){
-        //   console.log("FAILED to post", err);
-        // });
-      } else {
-        like_button.attr('class', like_button.attr("class") + ' is-liked');
-        $(".likes-count-" + String(item_id)).text(String(parseInt($(this).siblings(".likes-count-" + String(item_id)).text()) + 1));
-        $.post(likes_url, {
-          item_id: item_id,
-          user_id: user_id
-        })
-        .then(function(resp){
-
-        })
-        .fail(function(err){
-          console.log("FAILED to post", err);
-        });
-      }
-    });
-
-    //End like button
-
-  </script>
-
-  <script type="text/javascript">
-  $(document).ready(function() {
-      $('#postNewSpot')
-          .bootstrapValidator({
-              message: 'This value is not valid',
-              feedbackIcons: {
-                  valid: 'glyphicon glyphicon-ok',
-                  invalid: 'glyphicon glyphicon-remove',
-                  validating: 'glyphicon glyphicon-refresh'
-              },
-              fields: {
-
-                  title: {
-                      message: 'The title is not valid',
-                      validators: {
-                          notEmpty: {
-                              message: 'Please enter a title'
-                          },
-                          stringLength: {
-                              max: 50,
-                              message: 'Character limit of 50'
-                          }
-                      }
-                  },
-                 description: {
-                     message: 'The description is not valid',
-                     validators: {
-                         notEmpty: {
-                             message: 'Please enter a description'
-                         },
-                         stringLength: {
-                             max: 300,
-                             message: 'Character limit of 300'
-                         }
-                     }
-                 },
-                  image: {
-                      message: 'The image is not valid',
-                      validators: {
-                          notEmpty: {
-                              message: 'Please upload an image'
-                          }
-                      }
-                  },
-                  location: {
-                      message: 'The image is not valid',
-                      validators: {
-                          notEmpty: {
-                              message: 'Please enter a location'
-                          }
-                      }
-                  },
-
-              }
-          })
-          $('#loginForm')
-              .bootstrapValidator({
-                  message: 'This value is not valid',
-                  feedbackIcons: {
-                      valid: 'glyphicon glyphicon-ok',
-                      invalid: 'glyphicon glyphicon-remove',
-                      validating: 'glyphicon glyphicon-refresh'
-                  },
-                  fields: {
-
-                      username: {
-                          message: 'The username is not valid',
-                          validators: {
-                              notEmpty: {
-                                  message: 'Please enter your username'
-                              }
-                          }
-                      },
-                     password: {
-                         message: 'The password is not valid',
-                         validators: {
-                             notEmpty: {
-                                 message: 'Please enter your password'
-                             }
-                         }
-                     }
-
-                  }
-              })
-              $('#postNewComment')
-                  .bootstrapValidator({
-                      message: 'This value is not valid',
-                      feedbackIcons: {
-                          valid: 'glyphicon glyphicon-ok',
-                          invalid: 'glyphicon glyphicon-remove',
-                          validating: 'glyphicon glyphicon-refresh'
-                      },
-                      fields: {
-
-                          text: {
-                              message: 'The text is not valid',
-                              validators: {
-                                  notEmpty: {
-                                      message: 'Please enter a comment'
-                                  }
-                              }
-                          }
-
-                      }
-                  })
-              $('#signupForm')
-                  .bootstrapValidator({
-                      message: 'This value is not valid',
-                      feedbackIcons: {
-                          valid: 'glyphicon glyphicon-ok',
-                          invalid: 'glyphicon glyphicon-remove',
-                          validating: 'glyphicon glyphicon-refresh'
-                      },
-                      fields: {
-
-                          email: {
-                              message: 'The email is not valid',
-                              validators: {
-                                  notEmpty: {
-                                      message: 'Please enter your email address'
-                                  }
-                              }
-                          },
-                          name: {
-                              message: 'The name is not valid',
-                              validators: {
-                                  notEmpty: {
-                                      message: 'Please enter your name'
-                                  }
-                              }
-                          },
-                          username: {
-                              message: 'The username is not valid',
-                              validators: {
-                                  notEmpty: {
-                                      message: 'Please enter your username'
-                                  }
-                              }
-                          },
-                          password: {
-                              message: 'The password is not valid',
-                              validators: {
-                                  notEmpty: {
-                                      message: 'Please enter your password'
-                                  },
-                                  identical: {
-                                      field: 'password_confirmation',
-                                      message: 'Password confirmation was not a match'
-                                  }
-                              }
-                          },
-                          password_confirmation: {
-                              message: 'The username is not valid',
-                              validators: {
-                                  notEmpty: {
-                                      message: 'Please enter your password confirmation'
-                                  },
-                                  identical: {
-                                      field: 'password',
-                                      message: 'Password confirmation was not a match'
-                                  }
-                              }
-                          },
-
-                      }
-                  })
-          .on('error.field.bv', function(e, data) {
-              var messages = data.bv.getMessages(data.field);
-              $('#errors').find('li[data-bv-for="' + data.field + '"]').remove();
-              for (var i in messages) {
-                  $('<li/>').attr('data-bv-for', data.field).html(messages[i]).appendTo('#errors');
-              }
-              $('#errors').parents('.form-group').removeClass('hide');
-          })
-          .on('success.field.bv', function(e, data) {
-              $('#errors').find('li[data-bv-for="' + data.field + '"]').remove();
-          })
-          .on('success.form.bv', function(e) {
-              $('#errors')
-                  .html('')
-                  .parents('.form-group').addClass('hide');
-          });
-
-
-  });
-  </script>
 </body>
 </html>
