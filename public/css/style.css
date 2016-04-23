@@ -15,11 +15,9 @@ h3 {
   font-weight: 700; }
 
 a {
-  color: #33cccc;
-  transition: opacity .3s; }
+  color: #33cccc; }
   a:hover, a:focus {
     color: #33cccc;
-    opacity: .6;
     text-decoration: none; }
 
 .logo {
@@ -36,7 +34,7 @@ a {
   background-color: #33cccc;
   border: 0;
   border-radius: 0;
-  padding: 30px 0px;
+  padding: 10px 0px;
   font-weight: 700;
   color: white; }
 
@@ -73,7 +71,13 @@ a {
   border-radius: 0px; }
 
 .btn-lg {
-  width: 100%; }
+  width: 100%;
+  font-size: 30px;
+  border: 1px solid #33cccc;
+  transition: background-color .2s; }
+  .btn-lg:hover {
+    border: 1px solid #33cccc;
+    background-color: #adebeb; }
 
 .form-group-lg .form-control {
   border-radius: 0px; }
@@ -90,7 +94,7 @@ a {
 .icon.is-outlined {
   stroke: #FE4365;
   stroke-width: 2px;
-  fill: transparent; }
+  fill: rgba(255, 255, 255, 0.6); }
 
 .icon.is-liked {
   stroke: #FE4365;
@@ -119,13 +123,14 @@ a {
 .grid-sizer, .masonryImage {
   width: 32.5%; }
   .grid-sizer img, .masonryImage img {
-    width: 100%; }
+    width: 100%;
+    opacity: 1; }
 
 .masonryImage {
   margin-bottom: 10px;
   z-index: 1; }
 
-.show-item:hover {
+.opaque:hover {
   opacity: 1; }
 
 .item-details {
@@ -150,6 +155,13 @@ a {
   opacity: 1;
   top: 10%;
   z-index: 5; }
+
+.like-details {
+  position: absolute;
+  right: 10px;
+  bottom: -25px; }
+  .like-details .likes {
+    color: white; }
 
 .details-image {
   width: 100%; }

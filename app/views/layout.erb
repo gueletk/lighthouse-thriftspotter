@@ -40,11 +40,12 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <% if logged_in_user %>
-            <li><a class="post-btn" href="<%= uri('/items/new') %>">New Find</a></li>
+
+          <% if logged_in_user.id %>
+            <li><a class="post-btn" href="<%= uri('/items/new') %>">POST A FIND</a></li>
             <li><a class="post-btn" href="<%= uri('/items/index') %>">My Finds</a></li>
-            <li><a class="post-btn" href="<%= uri('/users/logout') %>">Log Out</a></li>
-            <li>Logged in as: <a href="<%= uri("/users/#{logged_in_user.id}") %>"><%= logged_in_user.username %></a></li>
+            <li><a href="<%= uri('/users/logout') %>">Log Out</a></li>
+            <li><a href="<%= uri("/users/#{logged_in_user.id}") %>"><span class="glyphicon glyphicon-user"></span> <%= logged_in_user.username %></a></li>
           <% else %>
             <li><a href="<%= uri('/users/login') %>">Log In</a></li>
           <% end %>
@@ -60,9 +61,9 @@
       <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 
     </div>
-    <div class="col-md-4"></div>
-    <div class="col-md-2">
-    <% if !logged_in_user %>
+    <div class="col-md-3"></div>
+    <div class="col-md-3">
+    <% if !logged_in_user.id %>
         <a href="<%= uri('/users/signup') %>" type="button" class="btn btn-default btn-lg">SIGN UP NOW</a>
     <% end %>
     </div>
@@ -261,6 +262,27 @@
 
                   }
               })
+              $('#postNewComment')
+                  .bootstrapValidator({
+                      message: 'This value is not valid',
+                      feedbackIcons: {
+                          valid: 'glyphicon glyphicon-ok',
+                          invalid: 'glyphicon glyphicon-remove',
+                          validating: 'glyphicon glyphicon-refresh'
+                      },
+                      fields: {
+
+                          text: {
+                              message: 'The text is not valid',
+                              validators: {
+                                  notEmpty: {
+                                      message: 'Please enter a comment'
+                                  }
+                              }
+                          }
+
+                      }
+                  })
               $('#signupForm')
                   .bootstrapValidator({
                       message: 'This value is not valid',

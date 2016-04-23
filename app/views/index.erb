@@ -4,14 +4,25 @@
   <% @item = item %>
 
   <div class="masonryImage">
-    <a class="show-item" href="/items/<%= @item.id %>">
+    <div class="show-item">
+      
       <div class="item-details">
-        <h3 class="text-center"><%= @item.title%></h3>
-        <hr>
-        <p class="text-center"><strong><%=@item.location%></strong></p>
+      <a class="opaque" href="/items/<%=@item.id%>">
+        <div class="row">
+        <div class="col-md-12">
+         <h3 class="text-center"><%= @item.title%></h3>
+         <hr>
+         <p class="text-center"><strong><%=@item.location%></strong></p> 
+        </div>  
+      </a>
       </div>
-      <img src="<%=@item.image_path%>" alt="<%= @item.title%>" title="<%= @item.title%>">
-    </a>
+      <div class="like-details">
+        <%= erb :_like_button, locals: { item: @item } %>
+      </div>
+       
+      </div>
+      <a class="opaque" href="/items/<%=@item.id%>"><img src="<%=@item.image_path%>" alt="<%= @item.title%>" title="<%= @item.title%>"></a>
+    </div>
   </div>
   <% end %> 
 

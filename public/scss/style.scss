@@ -29,11 +29,9 @@ h3 {
 
 a {
   color:$blueColor;
-  transition:opacity .3s;
-  &:hover, 
+   &:hover, 
   &:focus {
     color:$blueColor; 
-    opacity:.6;
     text-decoration: none; 
   }
 }
@@ -103,6 +101,13 @@ a {
 
 .btn-lg {
   width:100%;
+  font-size:30px;
+  border:1px solid $blueColor;
+  transition:background-color .2s;
+  &:hover {
+    border:1px solid $blueColor;
+    background-color:lighten($blueColor,30%);
+  }
 }
 
 .form-group-lg {
@@ -125,7 +130,7 @@ a {
 .icon.is-outlined{
   stroke:  $heartColor;
   stroke-width: 2px;
-  fill: transparent;
+  fill: rgba(255, 255, 255, .6);
 }
 
 .icon.is-liked{
@@ -163,6 +168,7 @@ a {
     width:32.5%;
     img {
       width:100%;
+      opacity:1;
     }
   }  
 
@@ -171,7 +177,7 @@ a {
   z-index: 1;
 } 
 
-.show-item {
+.opaque {
   &:hover {
     opacity:1;
   }
@@ -199,13 +205,21 @@ a {
     }
 }
 
-.show-item:hover > .item-details {
+
+.show-item:hover > .item-details{
     visibility: visible;
     opacity:1;
     top:10%;
     z-index: 5;
 } 
-
+.like-details {
+  position:absolute;
+  right: 10px;
+  bottom:-25px;
+  .likes {
+    color:white;
+  }
+}
 .details-image {
   width:100%;
 }
