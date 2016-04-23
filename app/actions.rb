@@ -35,6 +35,10 @@ get '/' do
   erb :index
 end
 
+get '/map' do
+  erb :'/map_test'
+end
+
 get '/items/new' do
   redirect '/users/login' unless logged_in?
   @item = Item.new(
