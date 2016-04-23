@@ -58,6 +58,7 @@ post '/items/new' do
   redirect '/login' unless logged_in_user
   @item = Item.new(
     title: params[:title],
+    category: Category.find_by(name: params[:category]),
     description: params[:description],
     price: params[:price],
     location: params[:location],
@@ -80,6 +81,12 @@ post '/items/new' do
   else
     redirect 'items/new'
   end
+end
+
+get '/items/sort/:category_name' do
+  @category = Category.find_by(name: params[:category_name])
+  @items = Item.all.where(category_id: @category.id)
+  erb :'/index'
 end
 
 get '/items/edit/:id' do
