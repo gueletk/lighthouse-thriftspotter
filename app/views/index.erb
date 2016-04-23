@@ -1,31 +1,50 @@
-<div id="container">
+<div class="well">
+  Sort by:
+  <div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Categories <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="/">All</a></li>
+    <% Category.all.each do |category| %>
+    <li><a href="/items/sort/<%= category.name %>"><%= category.name %></a></li>
+    <% end %>
+  </ul>
+</div>
+  <!-- <select class="selectpicker show-tick" id="category-select">
+    <option data-category-id="0">All</option>
+    < % Category.all.each do |category| % >
+      <option data-category-id="< % = category.id % >">< % = category.name % ></option>
+    < % end % >
+  </select> -->
+</div>
+
+<div  id="container" class="masonry-container">
 <div class="grid-sizer"></div>
 <% @items.each do |item| %>
   <% @item = item %>
 
-  <div class="masonryImage">
+  <div class="masonryImage" data-category-id="<%= item.category_id %>" data-item-id="<%= item.id %>">
     <div class="show-item">
-      
+
       <div class="item-details">
       <a class="opaque" href="/items/<%=@item.id%>">
         <div class="row">
         <div class="col-md-12">
          <h3 class="text-center"><%= @item.title%></h3>
          <hr>
-         <p class="text-center"><strong><%=@item.location%></strong></p> 
-        </div>  
+         <p class="text-center"><strong><%=@item.location%></strong></p>
+        </div>
       </a>
       </div>
       <div class="like-details">
         <%= erb :_like_button, locals: { item: @item } %>
       </div>
-       
+
       </div>
       <a class="opaque" href="/items/<%=@item.id%>"><img src="<%=@item.image_path%>" alt="<%= @item.title%>" title="<%= @item.title%>"></a>
     </div>
   </div>
-  <% end %> 
+  <% end %>
 
 </div>
-
-

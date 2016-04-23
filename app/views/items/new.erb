@@ -16,6 +16,17 @@
       </div>
 
       <div class="form-group form-group-lg">
+        <label class="col-sm-3 control-label">* Category</label>
+        <div class="col-sm-7">
+          <select class="form-control" name="category">
+            <% Category.all.each do |category| %>
+              <option><%= category.name %></option><li>
+            <% end %>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group form-group-lg">
         <label class="col-sm-3 control-label">* Description</label>
         <div class="col-sm-7">
           <textarea rows="6" name="description" class="form-control" maxlength="300" required ></textarea>
@@ -42,7 +53,7 @@
 
               <input id="pac-input" name= "location" class="controls" type="text"
                   placeholder="Enter a location">
-        
+
               <div id="map"></div>
 
         </div>
@@ -59,5 +70,3 @@
   </div>
   <div class="col-md-2"></div>
 </div>
-
-
