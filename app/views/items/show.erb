@@ -9,6 +9,7 @@
           <img src="<%=@item.image_path%>" class="details-image" alt="<%= @item.title%>" title="<%= @item.title%>">
           <span class="plus glyphicon glyphicon-plus"></span>
         </a>
+
       </div>
 
       <div class="col-md-7">
@@ -25,7 +26,13 @@
             <p><strong>Location</strong>: <%= @item.location%></p>
           </div>
         </div>
-
+        <iframe
+          width="100%"
+          height="200"
+          frameborder="0" style="border:0"
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBj6HdKWpBtxELsmoY7AdpzBbW0KM3e_GM
+            &q=<%=@item.location%>" allowfullscreen>
+        </iframe>
         <p>
           <%= @item.description %>
         </p>
