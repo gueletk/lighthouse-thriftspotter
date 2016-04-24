@@ -21,22 +21,35 @@ function initMap() {
             pos = {
               lat: Number(item.dataset.lat),
               lng: Number(item.dataset.long)
-
-            }
-
-            var infowindow = new google.maps.InfoWindow({
-              position: pos,
-              content: item.dataset.title
-            });
+            },
+            title = String(item.dataset.title)
 
             var marker = new google.maps.Marker({
               position: pos,
               map: map,
               icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' +'|FF0000|000000' 
             });
-            marker.addListener('click', function() {
-              infowindow.open(map, marker);
-            });
+            map.setCenter(marker.getPosition())
+            
+            var content = item.dataset.title + "<br><a href='items/" + item.dataset.id + "'>view</a>"
+
+
+            var infowindow = new google.maps.InfoWindow()
+            google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
+                    return function() {
+                       infowindow.setContent(content);
+                       infowindow.open(map,marker);
+                    };
+                })(marker,content,infowindow)); 
+          
+//////////////////////
+
+//////////////////////
+
+
+
+
+
           }
         }
 
@@ -52,7 +65,7 @@ function initMap() {
 
         var autocomplete = new google.maps.places.Autocomplete(input);
         autocomplete.bindTo('bounds', map);
-
+        
 
         var marker = new google.maps.Marker({
           map: map,

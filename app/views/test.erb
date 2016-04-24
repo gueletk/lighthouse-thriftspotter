@@ -1,16 +1,14 @@
 
 <div class="row">
 <div class="col-md-12"><h1>Map Search</h1></div>
-<div class="col-md-4">
-  <%@items = Item.all%>
-  <%@items.each_with_index do |item, index|%>
-    <div data-index="<%= index %>" data-title="<%=item.title%>" data-placeid="<%=item.place_id%>" data-long="<%=item.longitude%>" data-lat="<%=item.latitude%>" class="item">
-      <a href="/items/<%= item.id %>"><h4><%= index %>. <%= item.title %> <%= item.place_id %></h4></a>
-    </div>
-  <%end%>
 
-</div>
-<div class="col-md-8">
+<div class="col-md-12">
+<%@items = Item.all%>
+<%@items.each_with_index do |item, index|%>
+  <div data-id="<%=item.id%>" data-index="<%= index %>" data-title="<%=item.title%>" data-placeid="<%=item.place_id%>" data-long="<%=item.longitude%>" data-lat="<%=item.latitude%>" class="item">
+   
+  </div>
+<%end%>
   <div style="height:800px" id="map">
 
   </div>
