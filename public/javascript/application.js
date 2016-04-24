@@ -152,6 +152,14 @@ $(document).ready(function() {
                      }
                  }
              },
+             category: {
+                 message: 'The description is not valid',
+                 validators: {
+                     notEmpty: {
+                         message: 'Please select a category'
+                     },
+                 }
+             },
               image: {
                   message: 'The image is not valid',
                   validators: {
