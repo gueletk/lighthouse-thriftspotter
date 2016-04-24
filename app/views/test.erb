@@ -1,14 +1,25 @@
 
-<%@items = Item.all%>
-<%@items.each_with_index do |item, index|%>
-  <div data-index="<%= index %>" data-placeid="<%=item.place_id%>" data-long="<%=item.longitude%>" data-lat="<%=item.latitude%>" class="item">
-    <a href="/items/<%= item.id %>"><h4><%= index %>. <%= item.title %> <%= item.place_id %></h4></a>
-  </div>
-<%end%>
+<div class="row">
+<div class="col-md-12"><h1>Map Search</h1></div>
+<div class="col-md-4">
+  <%@items = Item.all%>
+  <%@items.each_with_index do |item, index|%>
+    <div data-index="<%= index %>" data-title="<%=item.title%>" data-placeid="<%=item.place_id%>" data-long="<%=item.longitude%>" data-lat="<%=item.latitude%>" class="item">
+      <a href="/items/<%= item.id %>"><h4><%= index %>. <%= item.title %> <%= item.place_id %></h4></a>
+    </div>
+  <%end%>
 
-<div id="map">
+</div>
+<div class="col-md-8">
+  <div style="height:800px" id="map">
+
+  </div>
+
+  <script src="/javascript/map_marker.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTbeQc-SCnCKLpYePwXmYPwXcvd_LRGtk&libraries=places&callback=initMap"></script>
 
 </div>
 
-<script src="/javascript/map_marker.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTbeQc-SCnCKLpYePwXmYPwXcvd_LRGtk&libraries=places&callback=initMap"></script>
+</div>
+
+

@@ -140,6 +140,14 @@ $(document).ready(function() {
                       }
                   }
               },
+            category: {
+                message: 'The description is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'Please select a category'
+                    }
+                }
+              },
              description: {
                  message: 'The description is not valid',
                  validators: {
