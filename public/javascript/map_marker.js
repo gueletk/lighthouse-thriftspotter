@@ -27,7 +27,7 @@ function initMap() {
             var marker = new google.maps.Marker({
               position: pos,
               map: map,
-              icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' +'|FF0000|000000' 
+              icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + item.dataset.index +'|FF0000|000000' 
             });
             map.setCenter(marker.getPosition())
             
