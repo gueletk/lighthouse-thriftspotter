@@ -326,6 +326,11 @@ a {
     font-weight: 300;
   }
 
+  .nopadding {
+    padding:0px!important;
+    margin-bottom:5px;
+  }
+
 @media (max-width: 767px) {
   .navbar-default .navbar-toggle .icon-bar {
       background-color: white;

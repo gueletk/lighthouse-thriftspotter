@@ -152,6 +152,14 @@ $(document).ready(function() {
                      }
                  }
              },
+             category: {
+                 message: 'The description is not valid',
+                 validators: {
+                     notEmpty: {
+                         message: 'Please select a category'
+                     },
+                 }
+             },
               image: {
                   message: 'The image is not valid',
                   validators: {
@@ -171,6 +179,67 @@ $(document).ready(function() {
 
           }
       })
+
+$('#editFind')
+    .bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            title: {
+                message: 'The title is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'Please enter a title'
+                    },
+                    stringLength: {
+                        max: 50,
+                        message: 'Character limit of 50'
+                    }
+                }
+            },
+           description: {
+               message: 'The description is not valid',
+               validators: {
+                   notEmpty: {
+                       message: 'Please enter a description'
+                   },
+                   stringLength: {
+                       max: 300,
+                       message: 'Character limit of 300'
+                   }
+               }
+           },
+           category: {
+               message: 'The description is not valid',
+               validators: {
+                   notEmpty: {
+                       message: 'Please select a category'
+                   },
+               }
+           },
+            image: {
+                message: 'The image is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'Please upload an image'
+                    }
+                }
+            },
+            location: {
+                message: 'The image is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'Please enter a location'
+                    }
+                }
+            },
+
+        }
+    })
       $('#loginForm')
           .bootstrapValidator({
               message: 'This value is not valid',
