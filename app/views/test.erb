@@ -1,0 +1,11 @@
+<%@items = Item.all%>
+<%@items.each do |item|%>
+<p data-long="<%=item.longitude%>" data-lat="<%=item.latitude%>" class="item"><%=item.location%> lat: <%=item.latitude%> long: <%=item.longitude%></p>
+<%end%>
+
+<div id="map">
+
+</div>
+
+<script src="/javascript/map_marker.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTbeQc-SCnCKLpYePwXmYPwXcvd_LRGtk&libraries=places&callback=initMap"></script>
