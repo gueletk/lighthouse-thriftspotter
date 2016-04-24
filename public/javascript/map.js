@@ -10,8 +10,8 @@
 
     document.getElementById("submit-button").addEventListener("click", function(){
       document.getElementById("place_id").value = place.place_id
-      document.getElementById("latitude").value = place.geometry.location.lat
-      document.getElementById("longitude").value = place.geometry.location.lng
+      document.getElementById("latitude").value = place.geometry.location.lat()
+      document.getElementById("longitude").value = place.geometry.location.lng()
     });
 
     if (navigator.geolocation) { //GEO LOCATION, FINDS USERS LOCATION
