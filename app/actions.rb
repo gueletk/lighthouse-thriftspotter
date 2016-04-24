@@ -6,7 +6,7 @@ enable :sessions
 
 helpers do
   def logged_in?
-    logged_in_user ? true : false
+    logged_in_user.id ? true : false
   end
 
   def logged_in_user
