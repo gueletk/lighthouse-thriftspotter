@@ -1,3 +1,4 @@
+
 <%@items = Item.all%>
 <%@items.each do |item|%>
 <p data-long="<%=item.longitude%>" data-lat="<%=item.latitude%>" class="item"><%=item.location%> lat: <%=item.latitude%> long: <%=item.longitude%></p>
