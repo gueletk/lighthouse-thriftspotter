@@ -1,7 +1,7 @@
 
 <%@items = Item.all%>
 <%@items.each do |item|%>
-<p data-long="<%=item.longitude%>" data-lat="<%=item.latitude%>" class="item"><%=item.location%> lat: <%=item.latitude%> long: <%=item.longitude%></p>
+<p data-place-id="<%=item.place_id%>" data-long="<%=item.longitude%>" data-lat="<%=item.latitude%>" class="item"><%=item.location%> lat: <%=item.latitude%> long: <%=item.longitude%></p>
 <%end%>
 
 <div id="map">

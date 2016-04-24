@@ -57,12 +57,15 @@ end
 post '/items/new' do
   redirect '/login' unless logged_in_user
   @item = Item.new(
+    place_id: params[:place_id],
     title: params[:title],
     category: Category.find_by(name: params[:category]),
     description: params[:description],
     price: params[:price],
     location: params[:location],
-    user_id: logged_in_user.id
+    user_id: logged_in_user.id,
+    latitude: params[:latitude],
+    longitude: params[:longitude]
   )
 
   @item.image_path =  get_file_name(params[:title], params[:image][:filename]) if params[:image]

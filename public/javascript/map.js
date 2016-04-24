@@ -4,8 +4,16 @@
   var map;
   var infowindow;
   var pos;
+  var place;
 
   function initMap() {
+
+    document.getElementById("submit-button").addEventListener("click", function(){
+      document.getElementById("place_id").value = place.place_id
+      document.getElementById("latitude").value = place.geometry.location.lat
+      document.getElementById("longitude").value = place.geometry.location.lng
+    });
+
     if (navigator.geolocation) { //GEO LOCATION, FINDS USERS LOCATION
         navigator.geolocation.getCurrentPosition(function(position) {
 
@@ -27,6 +35,7 @@
           map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
           map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
 
+          //creates a new Autocomplete object
           var autocomplete = new google.maps.places.Autocomplete(input);
           autocomplete.bindTo('bounds', map);
 
@@ -40,7 +49,8 @@
             infowindow.close();
 
             marker.setVisible(false);
-            var place = autocomplete.getPlace();
+            place = autocomplete.getPlace();
+            console.log(place.place_id);
 
             if (!place.geometry) {
               window.alert("Autocomplete's returned place contains no geometry");
@@ -63,7 +73,6 @@
             }));
             marker.setPosition(place.geometry.location);
             marker.setVisible(true);
-            console.log(place.geometry.place_id)
             var address = '';
             if (place.address_components) {
               address = [
@@ -91,8 +100,12 @@
 
 
 
+
     setupClickListener('changetype-all', []);
     setupClickListener('changetype-address', ['address']);
     setupClickListener('changetype-establishment', ['establishment']);
     setupClickListener('changetype-geocode', ['geocode']);
+
+
+
   }

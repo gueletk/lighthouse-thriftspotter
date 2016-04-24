@@ -25,9 +25,7 @@ function initMap() {
         items = document.getElementsByClassName('item')
 
         for (var i=0, item; item = items[i]; i++) {
-          if (typeof item.dataset.lat !== 'undefined'){
-            console.log(item.dataset.lat)
-            console.log(item.dataset.long)
+          if (typeof item.dataset.place_id !== 'undefined'){
             pos = {
               lat: Number(item.dataset.lat),
               lng: Number(item.dataset.long)
