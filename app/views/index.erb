@@ -1,22 +1,27 @@
 <div class="well">
   Sort by:
-  <div class="btn-group">
+  <!-- <div class="btn-group">
   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Categories <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
     <li><a href="/">All</a></li>
-    <% Category.all.each do |category| %>
-    <li><a href="/items/sort/<%= category.name %>"><%= category.name %></a></li>
-    <% end %>
-  </ul>
-</div>
-  <!-- <select class="selectpicker show-tick" id="category-select">
-    <option data-category-id="0">All</option>
     < % Category.all.each do |category| % >
-      <option data-category-id="< % = category.id % >">< % = category.name % ></option>
+      < % if category.name == @category.name % >
+        <li><a href="/items/sort/< % = category.name % >">< % = category.name % ></a></li>
     < % end % >
-  </select> -->
+  </ul>
+</div> -->
+  <select class="selectpicker show-tick" id="category-select" onchange="location = this.value;">
+    <option value="/">All</option>
+    <% Category.all.each do |category| %>
+      <% if @category && category.name == @category.name %>
+        <option selected value="/items/sort/<%= category.name %>"><%= category.name %></option>
+      <% else %>
+        <option value="/items/sort/<%= category.name %>"><%= category.name %></option>
+      <% end %>
+    <% end %>
+  </select>
 </div>
 
 <div  id="container" class="masonry-container">
@@ -36,10 +41,10 @@
 
          <div class="col-md-2"></div>
          <div class="col-md-8">
-          <p class="text-center"><strong><%=@item.location%></strong></p> 
+          <p class="text-center"><strong><%=@item.location%></strong></p>
          </div>
-         <div class="col-md-2"></div>         
-        </div>  
+         <div class="col-md-2"></div>
+        </div>
 
       </a>
       </div>

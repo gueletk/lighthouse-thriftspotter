@@ -38,8 +38,10 @@
 
           autocomplete.addListener('place_changed', function() {
             infowindow.close();
+
             marker.setVisible(false);
             var place = autocomplete.getPlace();
+
             if (!place.geometry) {
               window.alert("Autocomplete's returned place contains no geometry");
               return;
@@ -61,7 +63,7 @@
             }));
             marker.setPosition(place.geometry.location);
             marker.setVisible(true);
-
+            console.log(place.geometry.place_id)
             var address = '';
             if (place.address_components) {
               address = [
@@ -87,11 +89,10 @@
       };
 
 
-   
+
 
     setupClickListener('changetype-all', []);
     setupClickListener('changetype-address', ['address']);
     setupClickListener('changetype-establishment', ['establishment']);
     setupClickListener('changetype-geocode', ['geocode']);
   }
-
