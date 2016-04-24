@@ -79,6 +79,15 @@ a {
     border: 1px solid #33cccc;
     background-color: #adebeb; }
 
+.alert-item {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  border-radius: 0px;
+  border: 1px solid #33cccc;
+  transition: background-color .2s; }
+
 .form-group-lg .form-control {
   border-radius: 0px; }
 
@@ -204,7 +213,7 @@ a {
   z-index: 100; }
 
 #map {
-  height: 200px; }
+  height: 150px; }
 
 .controls {
   margin-top: 10px;

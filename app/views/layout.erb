@@ -16,7 +16,7 @@
 
   </head>
   <body>
-   <% if logged_in_user %>
+   <% if logged_in? %>
     <span data-user-id="<%= logged_in_user.id %>" id="user-id"></span>
   <% else %>
     <span data-user-id="" id="user-id"></span>
@@ -40,13 +40,20 @@
             </div>
             <div class="col-md-3"></div>
             <div class="col-md-3">
-            <% if !logged_in_user.id %>
+            <% if !logged_in? %>
                 <a href="<%= uri('/users/signup') %>" type="button" class="btn btn-default btn-lg">SIGN UP NOW</a>
             <% end %>
             </div>
           </div>
 
           <hr>
+              <% if flash.message %>
+                <div class="alert alert-item fade in">
+                <button class="close" data-dismiss="alert">×</button>
+                  Item Created Successfully
+                </div>
+              <% end %>
+
 
           <%= yield %>
 
@@ -58,7 +65,9 @@
 
         </div>
         <script src="/javascript/map.js"></script>
+
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTbeQc-SCnCKLpYePwXmYPwXcvd_LRGtk&libraries=places&callback=initMap"></script>
+
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
