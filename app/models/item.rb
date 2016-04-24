@@ -1,9 +1,14 @@
+require 'geocoder/models/active_record'
 class Item < ActiveRecord::Base
-
+  extend Geocoder::Model::ActiveRecord
   belongs_to :user
   belongs_to :category
   has_many :likes, :dependent => :delete_all
   has_many :comments, :dependent => :delete_all
+  
+  geocoded_by :location  # can also be an IP address
+  after_validation :geocode          # auto-fetch coordinates
+
 
   validates_presence_of :title, :description, :location, :image_path, :user
 

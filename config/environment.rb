@@ -3,11 +3,12 @@ require 'bundler/setup'
 
 require 'active_support/all'
 
+require 'geocoder'
+
 # Load Sinatra Framework (with AR)
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/contrib/all' # Requires cookies, among other things
-
 require './lib/flash'
 require 'pry'
 

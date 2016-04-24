@@ -3,7 +3,6 @@ source "https://rubygems.org"
 
 gem 'rake'
 gem 'activesupport'
-
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'sinatra-activerecord'
@@ -13,6 +12,9 @@ gem 'tux'
 gem 'bcrypt'
 gem 'database_cleaner'
 gem 'json'
+
+gem 'geocoder'
+gem 'json_pure'
 
 group :development, :test do
   gem 'pry'
