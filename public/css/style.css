@@ -20,6 +20,10 @@ a {
     color: #33cccc;
     text-decoration: none; }
 
+#edit-update-btn {
+  padding: 0;
+}
+
 .logo {
   font-family: "Bevan", cursive;
   color: #0a2929;

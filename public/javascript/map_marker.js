@@ -9,47 +9,28 @@ function initMap() {
   if (navigator.geolocation) { //GEO LOCATION, FINDS USERS LOCATION
       navigator.geolocation.getCurrentPosition(function(position) {
 
-
-
-        // pos = {
-        //   lat: position.coords.latitude,
-        //   lng: position.coords.longitude
-        // }
         map = new google.maps.Map(document.getElementById('map'), {
           center: myLocation,
           zoom: 13
         });
 
-        console.log(pos)
-
-        items = document.getElementsByClassName('item')
+        items = document.getElementsByClassName('item');
 
         for (var i=0, item; item = items[i]; i++) {
-          if (typeof item.dataset.lat !== 'undefined'){
-            console.log(item.dataset.lat)
-            console.log(item.dataset.long)
+          if (typeof item.dataset.placeid !== 'undefined'){
             pos = {
               lat: Number(item.dataset.lat),
               lng: Number(item.dataset.long)
             }
+
+
             var marker = new google.maps.Marker({
               position: pos,
               map: map,
-              title: 'Hello World!'
+              icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + item.dataset.index +'|FF0000|000000' 
             });
           }
-  // Look no need to do list[i] in the body of the loop
-  console.log("Looping: index ", i, "item" + item);
         }
-
-          // var marker = new google.maps.Marker({
-          //   position: pos,
-          //   draggable:true,
-          //   map: map,
-          //   title: 'Hello World!'
-          // });
-
-
 
         var input = /** @type {!HTMLInputElement} */(
                    document.getElementById('pac-input'));
@@ -78,10 +59,6 @@ function initMap() {
             window.alert("Autocomplete's returned place contains no geometry");
             return;
           }
-
-
-
-
         });
 
       })
