@@ -1,6 +1,7 @@
 class Item < ActiveRecord::Base
 
   belongs_to :user
+  belongs_to :category
   has_many :likes, :dependent => :delete_all
   has_many :comments, :dependent => :delete_all
 

@@ -1,5 +1,57 @@
 $(document).ready(function() {
 
+  // var selected_category = 0
+  //
+  // $('#category-select').change(function(ev){
+  //   var category_id = $("#category-select option:selected").data("category-id")
+  //
+  //   if (category_id == 0){
+  //     $(".masonryImage").show("fast");
+  //     selected_category = 0
+  //   } else if (selected_category == category_id){
+  //     return
+  //   } else {
+  //   $hidden_items = $(".masonryImage").filter(function(){
+  //     if(selected_category == 0){
+  //       return $(this).data("category-id") != category_id
+  //   } else {
+  //       return $(this).data("category-id") == selected_category
+  //   }
+  //   })
+  //   $hidden_items.hide("fast");
+  //   $hidden_items.removeClass("masonryImage")
+  //
+  //   $shown_items = $(".masonryImage").filter(function(){
+  //     return $(this).data("category-id") == category_id
+  //   })
+  //   $shown_items.show("fast");
+  //
+  //   selected_category = category_id;
+  //   }
+  //
+  //   var $container = $('.masonry-container')
+  //   var arr = new Array();
+  //   $container.masonry('hide', arr.push($hidden_items))
+  //   $container.masonry('layout').masonry();
+  //   console.log($hidden_items);
+    //$container.masonry('reloadItems')
+    //
+    // console.log("masonry-container " + $(".masonry-container").length);
+    // if($(".masonry-container").length > 0){
+    //   var $container = $('.masonry-container').masonry({
+    //     percentPosition: true,
+    //     itemSelector: $(".masonryImage").filter(function(){
+    //       return $(this).data("category-id") == category_id
+    //     }),
+    //     columnWidth: '.grid-sizer',
+    //     gutter:10
+    //   });
+    //   // layout Masonry after each image loads
+    //   $container.imagesLoaded().progress( function() {
+    //     $container.masonry('layout');
+    //   });
+    //}
+  // });
 
   $('.collapse').collapse('toggle');
     $('.image-popup-fit-width').magnificPopup({
