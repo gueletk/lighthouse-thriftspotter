@@ -1,34 +1,7 @@
 
 
-<div class="row">
-<div class="col-md-4">
-  <%@items = Item.all%>
-  <%@items.each_with_index do |item, index|%>
-    <div data-id="<%=item.id%>" data-index="<%= index += 1 %>" data-title="<%=item.title%>" data-placeid="<%=item.place_id%>" data-long="<%=item.longitude%>" data-lat="<%=item.latitude%>" class="item">
-      <h4><%= index %>. <a href="/items/<%= item.id %>"><%= item.title %></a></h4>
-    </div>
-  <%end%>
 
-</div>
-<div class="col-md-8">
-  <div style="height:500px" id="map">
-
-  </div>
-
-  <script src="/javascript/map_marker.js"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTbeQc-SCnCKLpYePwXmYPwXcvd_LRGtk&libraries=places&callback=initMap"></script>
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-
+<div id="galleryview">
 <div class="row">
   <div class="col-md-12">
     Categories:
@@ -67,9 +40,9 @@
          </div>
          <div class="col-md-2"></div>
         </div>
-
+        </div>       
       </a>
-      </div>
+
       <div class="like-details">
         <%= erb :_like_button, locals: { item: @item } %>
       </div>
@@ -79,5 +52,25 @@
     </div>
   </div>
   <% end %>
+</div>
+</div>
 
+<div id="mapview">
+  <div class = "row">
+  <div class="col-md-4">
+    <%@items = Item.all%>
+    <%@items.each_with_index do |item, index|%>
+      <div data-id="<%=item.id%>" data-index="<%= index += 1 %>" data-title="<%=item.title%>" data-placeid="<%=item.place_id%>" data-long="<%=item.longitude%>" data-lat="<%=item.latitude%>" class="item">
+        <h4><%= index %>. <a href="/items/<%= item.id %>"><%= item.title %></a></h4>
+        <p><%=item.location%></p>
+      </div>
+    <%end%>
 
+  </div>
+    <div class="col-md-8">
+      <div style="height:500px" id="map"></div>
+      <script src="/javascript/map_marker.js"></script>
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTbeQc-SCnCKLpYePwXmYPwXcvd_LRGtk&libraries=places&callback=initMap"></script>
+    </div>
+  </div>
+</div>

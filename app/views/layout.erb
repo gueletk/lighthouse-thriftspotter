@@ -13,7 +13,6 @@
 
   <title>thriftspotting</title>
 
-
   </head>
   <body>
    <% if logged_in? %>
@@ -45,7 +44,9 @@
             <% end %>
             </div>
             <div class="col-md-12">
-              <h3 class="text-right">View: <a href=""><span class="glyphicon glyphicon-map-marker"></span></a> | <a href=""><span class="glyphicon glyphicon-picture"></span></a></h3>
+              <h3 class="text-right">View: 
+              <button style="width:auto" class="btn btn-lg btn-default" id="showmap"><span class="glyphicon glyphicon-map-marker"></span></button>
+              <button style="width:auto"  class="btn btn-lg btn-default" id="showgallery"><span class="glyphicon glyphicon-picture"></span></button></h3>
 
             </div>
 
@@ -77,6 +78,20 @@
         <script src="/javascript/bootstrapValidator.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
         <script src="/javascript/application.js"></script>
+  <script>
+  $(document).ready(function(){
+
+      $("#showgallery").click(function(){
+          $("#galleryview").show();
+          $("#mapview").hide();    
+      });
+      $("#showmap").click(function(){
+          $("#galleryview").hide();
+          $("#mapview").show();
+
+      });
+  });
+  </script>
 
   </body>
 </html>
