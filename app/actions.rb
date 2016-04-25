@@ -158,7 +158,8 @@ post '/items/:id' do
     text: params[:text]
     )
   @comment.save
-  redirect "/"
+  erb :'items/show'
+
 end
 
 get '/users/signup' do
