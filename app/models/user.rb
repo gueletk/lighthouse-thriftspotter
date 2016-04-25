@@ -11,7 +11,9 @@ class User < ActiveRecord::Base
   before_validation { self.email.downcase! }
 
   def has_liked(search_item)
-    likes.detect{|like| like.item_id == search_item.id}
+    likes_list = likes.detect{|like| like.item_id == search_item.id}
+    likes_list.compact! if !likes_list.nil?
+    likes_list
   end
 
   def liked_items

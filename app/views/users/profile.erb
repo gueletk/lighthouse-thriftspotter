@@ -36,7 +36,8 @@
             <img src="<%=item.image_path%>" class="details-image" alt="<%= item.title%>" title="<%= item.title%>">
         </div>
         <div class="col-md-6">
-          <h3><a href="<%= uri('/items') %>"><%= item.title %></a></h3>
+          <% item_summary_location = "/items/#{item.id}" %>
+          <h3><a href="<%= uri(item_summary_location) %>"><%= item.title %></a></h3>
           <p><strong>Price</strong>: $<%= item.price %></p>
           <p><strong>Location</strong>: <%= item.location %></p>
         </div>
@@ -47,16 +48,17 @@
       <hr>
     <% end %>
     <a name="likes"></a><h1>Likes</h1>
-    <% if @user.liked_items == [] %>
+    <% if @user.liked_items.nil? %>
       <p>Get out there and start liking!</p>
-    <% end %>
+    <% else %>
       <% @user.liked_items.each do |item| %>
         <div class="row">
           <div class="col-md-4">
-              <img src="<%=item.image_path%>" class="details-image" alt="<%= item.title%>" title="<%= item.title%>">
+              <img src="<%= item.image_path %>" class="details-image" alt="<%= item.title %>" title="<%= item.title %>">
           </div>
           <div class="col-md-6">
-            <h3><a href="<%= uri('/items') %>"><%= item.title %></a></h3>
+            <% item_summary_location = "/items/#{item.id}" %>
+            <h3><a href="<%= uri(item_summary_location) %>"><%= item.title %></a></h3>
             <p><strong>Price</strong>: $<%= item.price %></p>
             <p><strong>Location</strong>: <%= item.location %></p>
           </div>
@@ -66,7 +68,7 @@
         </div>
         <hr>
       <% end %>
-
+    <% end %>
     </div>
   </div>
   <div class="col-md-2"></div>
