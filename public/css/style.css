@@ -12,17 +12,14 @@ h1, h2 {
   font-family: "Bevan", cursive; }
 
 h3 {
-  font-weight: 700; }
+  font-weight: 700;
+  margin-top: 0px; }
 
 a {
   color: #33cccc; }
   a:hover, a:focus {
     color: #33cccc;
     text-decoration: none; }
-
-#edit-update-btn {
-  padding: 0;
-}
 
 .logo {
   font-family: "Bevan", cursive;
