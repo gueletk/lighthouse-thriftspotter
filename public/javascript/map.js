@@ -17,14 +17,28 @@
     if (navigator.geolocation) { //GEO LOCATION, FINDS USERS LOCATION
         navigator.geolocation.getCurrentPosition(function(position) {
 
-          pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          }
+
           map = new google.maps.Map(document.getElementById('map'), {
             center: myLocation,
             zoom: 13
           });
+          if (document.getElementById("latitude").value == 'undefined'){
+            pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            }
+          }else{
+            pos = {
+              lat: Number(document.getElementById("latitude").value),
+              lng: Number(document.getElementById("longitude").value)
+            }
+            var marker = new google.maps.Marker({
+              position: pos,
+              map: map,
+            });
+            map.setCenter(marker.getPosition())
+          }
+
           var input = /** @type {!HTMLInputElement} */(
                      document.getElementById('pac-input'));
 
