@@ -24,6 +24,7 @@ function initMap() {
             },
             title = String(item.dataset.title)
 
+
             var marker = new google.maps.Marker({
               position: pos,
               map: map,
@@ -31,7 +32,7 @@ function initMap() {
             });
             map.setCenter(marker.getPosition())
             
-            var content = item.dataset.title + "<br><a href='items/" + item.dataset.id + "'>view</a>"
+            var content = item.dataset.title + "<br><a href='items/" + item.dataset.id + "'>view</a>"  
 
 
             var infowindow = new google.maps.InfoWindow()
@@ -41,14 +42,6 @@ function initMap() {
                        infowindow.open(map,marker);
                     };
                 })(marker,content,infowindow)); 
-          
-//////////////////////
-
-//////////////////////
-
-
-
-
 
           }
         }
