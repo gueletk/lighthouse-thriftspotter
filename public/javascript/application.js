@@ -229,14 +229,7 @@ $('#editFind')
                    },
                }
            },
-            image: {
-                message: 'The image is not valid',
-                validators: {
-                    notEmpty: {
-                        message: 'Please upload an image'
-                    }
-                }
-            },
+
             location: {
                 message: 'The image is not valid',
                 validators: {
