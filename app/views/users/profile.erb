@@ -9,8 +9,8 @@
       </div>
       <div class="col-md-6">
       <p class="profile-nav text-right">
-        <a href="#spots">
-          <span class="glyphicon glyphicon-search"></span> Spots (<%= @user.items.length%>)
+        <a href="#finds">
+          <span class="glyphicon glyphicon-search"></span> Finds (<%= @user.items.length%>)
         </a>
       </p>
 
@@ -27,9 +27,9 @@
     </div>
 
     <hr>
-    <a name="spots"></a><h1>Spots</h1>
+    <a name="finds"></a><h1>Finds</h1>
     <% if @user.items == [] %>
-      <p>Post some finds!</p>
+      <p>No finds yet!</p>
     <% end %>
     <% @user.items.each do |item| %>
       <div class="row">
@@ -50,7 +50,7 @@
     <% end %>
     <a name="likes"></a><h1>Likes</h1>
     <% if @user.liked_items.nil? %>
-      <p>Get out there and start liking!</p>
+      <p>No likes yet!</p>
     <% else %>
       <% @user.liked_items.each do |item| %>
         <div class="row">

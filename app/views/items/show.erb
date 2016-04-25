@@ -22,7 +22,9 @@
 
           <div class="col-md-9">
             <p><strong>Posted by</strong>: <a href="/users/<%=@item.user_id%>"><%= @item.user.username %></a></p>
+            <% if @item.price %>
             <p><strong>Price</strong>: $<%= @item.price %></p>
+            <% end %>
             <p><strong>Location</strong>: <%= @item.location%></p>
           </div>
         </div>
