@@ -20,8 +20,9 @@
         <div class="col-sm-7">
           <select class="form-control" name="category">
             <option disabled selected value>Pick one</option>
+
             <% Category.all.each do |category| %>
-              <option><%= category.name %></option><li>
+              <option><%= category.name %></option>
             <% end %>
           </select>
         </div>
