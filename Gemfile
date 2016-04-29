@@ -14,6 +14,10 @@ gem 'bcrypt'
 gem 'database_cleaner'
 gem 'json'
 
+group :production do
+  gem 'pg'
+end
+
 group :development, :test do
   gem 'pry'
   gem 'shotgun'
