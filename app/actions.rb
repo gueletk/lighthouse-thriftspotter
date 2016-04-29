@@ -1,5 +1,5 @@
 # Homepage (Root path)
-require 'pry'
+
 require 'bcrypt'
 use Rack::MethodOverride
 enable :sessions
