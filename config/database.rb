@@ -10,7 +10,10 @@ configure do
       database: "db/db.sqlite3"
     }
   else
-    set :database, ENV['DATABASE_URL']
+    set :database, {
+    adapter: "postgres"
+    database: ENV['DATABASE_URL']
+  }
   end
 
   # Load all models from app/models, using autoload instead of require
