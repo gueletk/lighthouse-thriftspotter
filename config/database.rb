@@ -11,7 +11,7 @@ configure do
     }
   else
     set :database, {
-    adapter: "postgres",
+    adapter: "postgresql",
     database: ENV['DATABASE_URL']
   }
   end
