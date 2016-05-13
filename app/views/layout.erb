@@ -32,6 +32,7 @@
 
         <div class="container">
 
+
           <div class="row">
             <div class="col-md-6">
               <a href="<%= uri('/') %>" class="logo"><span class="glyphicon glyphicon-search"></span> thriftspotting</a>
@@ -78,7 +79,7 @@
 
       $("#showgallery").click(function(){
           $("#galleryview").show();
-          $("#mapview").hide();    
+          $("#mapview").hide();
       });
       $("#showmap").click(function(){
           $("#galleryview").hide();
@@ -87,6 +88,9 @@
       });
   });
   </script>
-
+  <script type="text/javascript" src="jquery.ui.widget"></script>
+  <script type="text/javascript" src="jquery.iframe-transport"></script>
+  <script type="text/javascript" src="jquery.fileupload"></script>
+  <script type="text/javascript" src="jquery.cloudinary"></script>
   </body>
 </html>

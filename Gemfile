@@ -13,6 +13,7 @@ gem 'tux'
 gem 'bcrypt'
 gem 'database_cleaner'
 gem 'json'
+gem 'cloudinary'
 
 group :production do
   gem 'pg'

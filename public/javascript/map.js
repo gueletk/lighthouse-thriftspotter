@@ -9,19 +9,27 @@
   function initMap() {
 
     document.getElementById("submit-button").addEventListener("click", function(){
-      document.getElementById("place_id").value = place.place_id
-      document.getElementById("latitude").value = place.geometry.location.lat()
-      document.getElementById("longitude").value = place.geometry.location.lng()
+      document.getElementById("place_id").value = place.place_id;
+      document.getElementById("latitude").value = place.geometry.location.lat();
+      document.getElementById("longitude").value = place.geometry.location.lng();
     });
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: -34.397, lng: 150.644},
+      zoom: 13});
 
     if (navigator.geolocation) { //GEO LOCATION, FINDS USERS LOCATION
         navigator.geolocation.getCurrentPosition(function(position) {
 
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          console.log(position.coords.latitude)
 
-          map = new google.maps.Map(document.getElementById('map'), {
-            center: myLocation,
-            zoom: 13
-          });
+
+
+          map.setCenter(pos);
           if (document.getElementById("latitude").value == 'undefined'){
             pos = {
               lat: position.coords.latitude,
@@ -36,7 +44,7 @@
               position: pos,
               map: map,
             });
-            map.setCenter(marker.getPosition())
+            //map.setCenter(marker.getPosition())
           }
 
           var input = /** @type {!HTMLInputElement} */(

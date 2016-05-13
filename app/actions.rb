@@ -1,10 +1,20 @@
 # Homepage (Root path)
 
 require 'bcrypt'
+require 'cloudinary'
 use Rack::MethodOverride
 enable :sessions
 
+if Cloudinary.config.api_key.blank?
+ require './config/cloudinary'
+end
+if Cloudinary.config.api_key.blank?
+ puts "Please configure your Cloudinary account in ./config/cloudinary"
+ exit
+end
+
 helpers do
+
   def logged_in?
     return false unless logged_in_user
     logged_in_user.id ? true : false
@@ -24,7 +34,7 @@ def get_file_name(title, image_name)
   name = title.gsub(/\s+/,'_').downcase
   extension = /\..*/.match(image_name)[0]
   timestamp = Time.now.getutc.to_i.to_s
-  "/images/#{name}_#{timestamp}#{extension}"
+  "#{name}_#{timestamp}#{extension}"
 end
 
 def check_password(user, password)
@@ -69,14 +79,18 @@ post '/items/new' do
     longitude: params[:longitude]
   )
 
-  @item.image_path =  get_file_name(params[:title], params[:image][:filename]) if params[:image]
+  # @item.image_path =  get_file_name(params[:title], params[:image][:filename]) if params[:image]
+
+  filename = get_file_name(params[:title], params[:image][:filename])
 
   if params[:image]
-    file = params[:image][:tempfile]
+    @item.image_path = Cloudinary::Uploader.upload(params[:image][:tempfile])["secure_url"]
 
-    File.open("./public#{@item.image_path}", 'wb') do |f|
-      f.write(file.read)
-    end
+    # file = params[:image][:tempfile]
+    #
+    # File.open("./public#{@item.image_path}", 'wb') do |f|
+    #   f.write(file.read)
+    # end
   end
 
   if @item.save
